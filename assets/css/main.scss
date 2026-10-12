@@ -41,3 +41,18 @@
     "vendor/font-awesome/brands",
     "vendor/magnific-popup/magnific-popup"
 ;
+/* JetBrains Mono, self-hosted (SIL OFL 1.1, see assets/fonts/JetBrainsMono-OFL.txt).
+   Variable font (any weight 100-800 from one file), Latin subset, Fontsource 5.3.0.
+   Used via $monospace in _sass/_themes.scss.
+   $mono-size-adjust scales every use of JetBrains Mono (headings, nav, code);
+   e.g. 106% makes it 6 % larger. Fallback fonts are not affected. */
+$mono-size-adjust: 100%;
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-Variable.woff2") format("woff2-variations"),
+       url("../fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: $mono-size-adjust;
+}
