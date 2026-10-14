@@ -23,7 +23,7 @@ repository               : "jkhartlaub/jkhartlaub.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpeg"
+  avatar           : "profile.png"
   name             : "Jonathan K. Hartlaub"
   pronouns         : "he / him"  
   bio              : "I am a PhD Candidate at the German Aerospace Center (DLR), specializing in long-range interacting classical and quantum systems"
