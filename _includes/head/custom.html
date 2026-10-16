@@ -17,4 +17,49 @@
 <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<!-- Structured data (JSON-LD) for search engines, home page only.
+     Values come from _config.yml (title, url, author.*). -->
+{% if page.url == "/" %}
+{% assign a = site.author %}
+{% capture same_as %}{{ a.orcid }}|{{ a.googlescholar }}|{{ a.arxiv }}|{{ a.researchgate }}|{% if a.github %}https://github.com/{{ a.github }}{% endif %}|{% if a.linkedin %}https://www.linkedin.com/in/{{ a.linkedin }}{% endif %}{% endcapture %}
+{% assign same_as = same_as | split: "|" | compact %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ site.url | append: "/#website" | jsonify }},
+      "url": {{ site.url | append: "/" | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": {{ site.masthead_title | jsonify }}
+    },
+    {
+      "@type": "ProfilePage",
+      "url": {{ site.url | append: "/" | jsonify }},
+      "mainEntity": { "@id": {{ site.url | append: "/#person" | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ site.url | append: "/#person" | jsonify }},
+      "name": {{ a.name | jsonify }},
+      "givenName": {{ a.given_name | jsonify }},
+      "additionalName": {{ a.additional_name | jsonify }},
+      "familyName": {{ a.family_name | jsonify }},
+      "alternateName": {{ a.alternateName | jsonify }},
+      "jobTitle": {{ a.job_title | jsonify }},
+      "url": {{ site.url | append: "/" | jsonify }},
+      "image": {{ a.avatar | prepend: "/images/" | prepend: site.url | jsonify }},
+      "email": {{ a.email | prepend: "mailto:" | jsonify }},
+      "affiliation": [
+        { "@type": "Organization", "name": {{ a.employer | jsonify }}, "url": {{ a.employer_url | jsonify }} },
+        { "@type": "CollegeOrUniversity", "name": {{ a.university | jsonify }}, "url": {{ a.university_url | jsonify }} }
+      ],
+      "sameAs": {{ same_as | jsonify }}
+    }
+  ]
+}
+</script>
+{% endif %}
+
 <!-- end custom head snippets -->

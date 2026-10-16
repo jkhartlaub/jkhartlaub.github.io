@@ -9,7 +9,8 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Jonathan Kaspar Hartlaub"
+title                    : "Jonathan K. Hartlaub" # <title> of every page, search results, link previews
+masthead_title           : "Jonathan Kaspar Hartlaub" # name shown in the top bar
 title_separator          : "-"
 name                     : &name "Jonathan K. Hartlaub"
 description              : &description "PhD Candidate at the German Aerospace Center (DLR)"
@@ -78,7 +79,19 @@ author:
   xing             : # Username
   youtube          : # Username
   zhihu            : # Username
-  alternateName    : "Jonathan K. Busse"
+  # Structured data for search engines (JSON-LD in _includes/head/custom.html)
+  given_name       : "Jonathan"
+  additional_name  : "Kaspar"
+  family_name      : "Hartlaub"
+  job_title        : "PhD Candidate"
+  alternateName    : # other names under which I am known or have published
+    - "Jonathan Kaspar Hartlaub"
+    - "Jonathan K. Busse"
+    - "Jonathan Kaspar Busse"
+    - "Jonathan Busse"
+    - "Jonathan Hartlaub"
+    - "J. K. Hartlaub"
+    - "J. K. Busse"
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
