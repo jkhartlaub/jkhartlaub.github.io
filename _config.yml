@@ -39,7 +39,7 @@ author:
   # Academic websites
   googlescholar    : "https://scholar.google.com/citations?user=kQcJUkkAAAAJ&hl=de&oi=ao"
   researchgate     : "https://www.researchgate.net/profile/Jonathan-Busse"
-  arxiv            : "https://arxiv.org/a/busse_j_1.html"
+  arxiv            : # does not include all papers, and uses busse "https://arxiv.org/a/busse_j_1.html"
   orcid            : "https://orcid.org/0009-0001-3323-3455"
   impactstory      : # URL
   semantic         : # URL
