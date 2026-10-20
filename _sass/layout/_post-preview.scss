@@ -3,6 +3,8 @@
    Newest post as a card, clickable as a whole via the title link's ::after
    overlay (links inside the body preview sit above the overlay);
    older posts as date + title lines below.
+   The archive lists (blog posts, tags, related) use the same meta line,
+   title and excerpt without the box (.post-item).
    ========================================================================== */
 
 .post-preview-group {
@@ -19,9 +21,10 @@
   }
 }
 
-.post-preview__meta {
+/* Source and date line, shared by the card and the archive lists (_includes/post-meta.html) */
+.post-meta {
   font-family: $monospace;
-  font-size: $type-size-6;
+  font-size: 1em;
   letter-spacing: 0.02em;
   color: var(--global-text-color-light);
   margin-bottom: 0.5em !important;
@@ -118,4 +121,39 @@
       color: var(--global-link-color);
     }
   }
+}
+
+/* Post entries in archive lists (_includes/archive-single.html) */
+.post-item {
+  margin-bottom: 1.6em;
+
+  .post-meta {
+    margin-top: 0.9em;
+  }
+
+  .archive__item-title {
+    margin: 0 0 0.35em;
+    font-size: $type-size-4;
+    line-height: 1.25;
+
+    a {
+      color: var(--global-text-color);
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: var(--global-link-color);
+      }
+    }
+  }
+
+  .post-item__excerpt {
+    margin: 0;
+    font-size: 1em;
+    color: var(--global-text-color-light);
+  }
+}
+
+.grid__item .post-item .archive__item-title {
+  font-size: $type-size-5;
 }

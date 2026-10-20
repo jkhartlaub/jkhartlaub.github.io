@@ -1,0 +1,5 @@
+{%- comment -%}
+  Source and date line for a post (home page card, blog archive, tag pages, related posts).
+  Expects `post` in scope. LinkedIn entries are those with front matter `link:`.
+{%- endcomment -%}
+<p class="post-meta">{% if post.link %}<i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn{% else %}<i class="fas fa-pen-nib" aria-hidden="true"></i> Blog{% endif %} <span aria-hidden="true">·</span> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>

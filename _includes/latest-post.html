@@ -12,7 +12,7 @@
 {%- if forloop.first %}
 {%- assign post_body = post.content | strip_html | strip %}
 <article class="post-preview">
-<p class="post-preview__meta">{% if post.link %}<i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn{% else %}<i class="fas fa-pen-nib" aria-hidden="true"></i> Blog{% endif %} <span aria-hidden="true">·</span> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+{% include post-meta.html %}
 <h3 class="post-preview__title"><a href="{{ post_href }}">{{ post.title }}</a></h3>
 {%- if post.excerpt %}
 <p class="post-preview__excerpt">{{ post.excerpt | markdownify | strip_html | strip }}</p>
