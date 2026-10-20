@@ -1,0 +1,10 @@
+{%- comment -%}
+  Venue and date line for a publication (publications page, sitemap), styled like the post meta line.
+  Icon: arXiv for venue "arXiv", GitHub for software hosted there, DOI otherwise.
+{%- endcomment -%}
+{%- assign venue_lc = post.venue | downcase -%}
+{%- if venue_lc contains "arxiv" -%}{%- assign pub_icon = "ai ai-arxiv" -%}
+{%- elsif post.category == "software" and post.link contains "github.com" -%}{%- assign pub_icon = "fab fa-github" -%}
+{%- elsif post.category == "software" -%}{%- assign pub_icon = "fas fa-code" -%}
+{%- else -%}{%- assign pub_icon = "ai ai-doi" -%}{%- endif -%}
+<p class="post-meta"><i class="{{ pub_icon }}" aria-hidden="true"></i> {{ post.venue }} <span aria-hidden="true">·</span> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %Y" }}</time></p>

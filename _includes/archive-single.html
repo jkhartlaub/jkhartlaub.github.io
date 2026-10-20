@@ -21,6 +21,18 @@
     {% if post.excerpt %}<p class="archive__item-excerpt post-item__excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | strip }}</p>{% endif %}
   </article>
 </div>
+{% elsif post.collection == 'publications' %}
+{%- assign pub_authors = post.citation | split: " (" | first | replace: "Busse, J. K.", "<strong>Busse, J. K.</strong>" | replace: "Hartlaub, J. K.", "<strong>Hartlaub, J. K.</strong>" -%}
+{%- if post.link contains "doi.org/" -%}{%- assign pub_doi = post.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pub_doi = nil -%}{%- endif -%}
+<div class="{{ include.type | default: "list" }}__item">
+  <article class="archive__item post-item" itemscope itemtype="http://schema.org/CreativeWork">
+    {% include publication-meta.html %}
+    <h2 class="archive__item-title post-item__title" itemprop="headline"><a href="{% if post.link %}{{ post.link }}{% else %}{{ base_path }}{{ post.url }}{% endif %}">{{ title }}</a></h2>
+    {% if post.citation %}<p class="post-item__authors">{{ pub_authors }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt post-item__excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | strip }}</p>{% endif %}
+    <p class="post-item__links">{% if pub_doi %}DOI: <a href="{{ post.link }}">{{ pub_doi }}</a>{% elsif post.link %}<a href="{{ post.link }}">{{ post.link | remove: "https://" | remove: "http://" }}</a>{% endif %}{% if post.paperurl %} <span aria-hidden="true">·</span> <a href="{{ post.paperurl }}">View Open Access Version</a>{% endif %}</p>
+  </article>
+</div>
 {% else %}
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">

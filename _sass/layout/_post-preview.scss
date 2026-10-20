@@ -123,7 +123,7 @@
   }
 }
 
-/* Post entries in archive lists (_includes/archive-single.html) */
+/* Post and publication entries in archive lists (_includes/archive-single.html) */
 .post-item {
   margin-bottom: 1.6em;
 
@@ -145,6 +145,17 @@
         color: var(--global-link-color);
       }
     }
+  }
+
+  .post-item__authors {
+    margin: 0 0 0.25em;
+    font-size: 1em;
+  }
+
+  .post-item__links {
+    margin: 0.25em 0 0;
+    font-size: 0.9em;
+    color: var(--global-text-color-light);
   }
 
   .post-item__excerpt {
