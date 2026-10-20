@@ -1,0 +1,34 @@
+{%- comment -%}
+  Recent posts for the home page: the newest post in _posts as a card, the next ones as date + title lines.
+  LinkedIn entries (front matter `link:`) open the LinkedIn post; other posts open their page on this site.
+  If the newest post has body text, its first lines are shown in the card and fade out.
+  Usage in a Markdown page: {% include latest-post.html %}  or  {% include latest-post.html count=4 %}
+{%- endcomment -%}
+{%- include base_path -%}
+{%- assign count = include.count | default: 3 -%}
+<div class="post-preview-group" markdown="0">
+{%- for post in site.posts limit: count -%}
+{%- if post.link -%}{%- assign post_href = post.link -%}{%- else -%}{%- capture post_href -%}{{ base_path }}{{ post.url }}{%- endcapture -%}{%- endif -%}
+{%- if forloop.first %}
+{%- assign post_body = post.content | strip_html | strip %}
+<article class="post-preview">
+<p class="post-preview__meta">{% if post.link %}<i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn{% else %}<i class="fas fa-pen-nib" aria-hidden="true"></i> Blog{% endif %} <span aria-hidden="true">·</span> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+<h3 class="post-preview__title"><a href="{{ post_href }}">{{ post.title }}</a></h3>
+{%- if post.excerpt %}
+<p class="post-preview__excerpt">{{ post.excerpt | markdownify | strip_html | strip }}</p>
+{%- endif %}
+{%- if post_body != "" %}
+<div class="post-preview__body">{{ post.content }}</div>
+{%- endif %}
+</article>
+{%- if forloop.last == false %}
+<ul class="post-preview-list">
+{%- endif %}
+{%- else %}
+<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time><a href="{{ post_href }}">{{ post.title }}</a></li>
+{%- if forloop.last %}
+</ul>
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+</div>

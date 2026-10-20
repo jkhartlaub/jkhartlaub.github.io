@@ -16,6 +16,10 @@ The Epstein Zeta Function
 ======
 My research revolves around the Epstein zeta function, a special function with applications to many-body lattice systems with many exciting properties. It is a broad generalization of the famous Riemann zeta function, whose zeros are the subject of one of the Millennium Problems.
 
+Recent Posts
+======
+{% include latest-post.html %}
+
 About Me
 ======
 When I’m done crunching numbers, I like to go dancing or bouldering. I’m especially thankful for my roommates, who accept me playing piano late into the evening. If there’s still time on the weekend, you may find me playing board games with my friends.
