@@ -11,26 +11,18 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2 id="{{ category[0] | slugify }}" class="archive__subtitle">{{ category[1].title }}</h2>
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<!-- All publications, newest first, grouped by year (like the Blog Posts page).
+     The type shows in each entry's meta line (arXiv / DOI / GitHub icon and venue). -->
+{% assign pubs = site.publications | sort: "date" | reverse %}
+{% assign written_year = "" %}
+{% for post in pubs %}
+  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% if year != written_year %}
+    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
+    {% assign written_year = year %}
+  {% endif %}
+  {% include archive-single.html %}
+{% endfor %}
 
 
 
