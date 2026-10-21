@@ -9,10 +9,11 @@ redirect_from:
 
 
 What computable effects do particles have on each other if there are simply too many of them for computers to handle separately, and if their properties are lost when we "smooth them out" too much?
-This is what I am trying to find out in my PhD at the German Aerospace Center (DLR), where I specialize in the development of methods and algorithms for long-range interacting classical and quantum lattices.
+This is subject of my ongoing PhD at the German Aerospace Center (DLR) and the University of Saarbrücken where I specialize in the development of methods and algorithms for long-range interacting classical and quantum lattices.
 
 
-My research revolves around the Epstein zeta function, a special function with applications to many-body lattice systems with many exciting properties. It is a broad generalization of the famous Riemann zeta function, whose zeros are the subject of one of the Millennium Problems.
+My research revolves around the Epstein zeta function, a special function with applications to many-body lattice systems with many exciting properties.
+It is a broad generalization of the famous Riemann zeta function, whose zeros are the subject of one of the Millennium Problems.
 
 {% include recent-talks.html %}
 
