@@ -10,6 +10,7 @@
     room:       optional
     time:       optional, e.g. "Thursday, 4:36 PM"
     speakers:   optional, only when the talk was shared
+    authors:    optional, author list of the abstract
     slides:     optional, path of the PDF, e.g. /files/26-06-17.pdf
     event_url:  optional, website of the event
     links:      optional list of further links, each with label and url
@@ -26,4 +27,5 @@
   {% if page.room %}<dt>Room</dt><dd>{{ page.room }}</dd>{% endif %}
   {% if page.time %}<dt>Time</dt><dd>{{ page.time }}</dd>{% endif %}
   {% if page.speakers %}<dt>Speakers</dt><dd>{{ page.speakers }}</dd>{% endif %}
+  {% if page.authors %}<dt>Authors</dt><dd>{{ page.authors }}</dd>{% endif %}
 </dl>
