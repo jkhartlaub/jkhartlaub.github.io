@@ -1,0 +1,96 @@
+/* ==========================================================================
+   DATED ROWS: date column on the left, entry on the right.
+   Used by the blog list (_includes/archive-single.html), talks (_includes/talk-row.html,
+   _includes/recent-talks.html) and the CV. On phones the date moves above the entry.
+   ========================================================================== */
+
+.dated-list {
+  margin: 0.8em 0 0;
+}
+
+.dated-row {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 1.2em;
+  margin: 0 0 1em;
+
+  p {
+    margin: 0;
+  }
+
+  @include breakpoint(max-width $small) {
+    grid-template-columns: 1fr;
+    gap: 0.1em;
+  }
+}
+
+.archive__subtitle + .dated-row {
+  margin-top: 0.8em;
+}
+
+.dated-row--wide {
+  grid-template-columns: 10.5em 1fr;
+
+  @include breakpoint(max-width $small) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Date plus optional source icon; the icon moves to its own line when the column is too narrow */
+.dated-row__date {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  column-gap: 0.45em;
+  padding-top: 0.2em;
+  font-family: $monospace;
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+
+  > * {
+    white-space: nowrap;
+  }
+}
+
+.page__content .dated-row__title,
+.dated-row__title {
+  font-weight: 600;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--global-link-color);
+    }
+  }
+}
+
+.page__content .dated-row__sub,
+.dated-row__sub {
+  font-size: 0.95em;
+}
+
+.page__content .dated-row__detail,
+.dated-row__detail {
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+/* "upcoming" tag on talks; visibility follows the .is-upcoming class (set at build, corrected in the browser) */
+.dated-row__tag {
+  display: none;
+  margin-left: 0.5em;
+  padding: 0.05em 0.45em;
+  font-family: $monospace;
+  font-size: 0.7em;
+  font-weight: normal;
+  vertical-align: 0.15em;
+  color: var(--global-link-color);
+  border: 1px solid var(--global-link-color);
+}
+
+.is-upcoming .dated-row__tag {
+  display: inline-block;
+}

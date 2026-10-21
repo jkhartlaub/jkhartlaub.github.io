@@ -11,6 +11,17 @@ author_profile: true
 
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
+{% include base_path %}
+{% assign talks_desc = site.talks | sort: "date" | reverse %}
+<div data-upcoming-list>
+{% assign written_year = "" %}
+{% for t in talks_desc %}
+  {% capture year %}{{ t.date | date: '%Y' }}{% endcapture %}
+  {% if year != written_year %}
+    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
+    {% assign written_year = year %}
+  {% endif %}
+  {% include talk-row.html talk=t date_format="%b %-d" show_title=true %}
 {% endfor %}
+</div>
+{% include upcoming-script.html %}

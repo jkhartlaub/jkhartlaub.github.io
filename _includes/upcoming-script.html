@@ -1,0 +1,32 @@
+{%- comment -%}
+  The site is only rebuilt on push, so "upcoming" is recomputed in the browser against today's date.
+  Lists with data-upcoming-list: rows with data-date get .is-upcoming (date today or later).
+  With data-reorder: upcoming rows first (soonest on top), then past rows (newest on top), at most data-max-past past rows shown.
+  data-heading names the id of a heading whose text switches between data-text-upcoming and data-text-past.
+  Without JavaScript the build-time state stays.
+{%- endcomment -%}
+<script>
+(function () {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var lists = document.querySelectorAll("[data-upcoming-list]");
+  Array.prototype.forEach.call(lists, function (list) {
+    var up = [], past = [];
+    Array.prototype.forEach.call(list.querySelectorAll("[data-date]"), function (row) {
+      var p = row.getAttribute("data-date").split("-");
+      var d = new Date(+p[0], +p[1] - 1, +p[2]);
+      var isUp = d >= today;
+      row.classList.toggle("is-upcoming", isUp);
+      (isUp ? up : past).push({ d: d, row: row });
+    });
+    if (list.hasAttribute("data-reorder")) {
+      var maxPast = parseInt(list.getAttribute("data-max-past") || "0", 10);
+      up.sort(function (a, b) { return a.d - b.d; });
+      past.sort(function (a, b) { return b.d - a.d; });
+      up.concat(past).forEach(function (x) { list.appendChild(x.row); });
+      past.forEach(function (x, i) { x.row.hidden = maxPast > 0 && i >= maxPast; });
+    }
+    var h = document.getElementById(list.getAttribute("data-heading") || "");
+    if (h) { h.textContent = up.length ? h.getAttribute("data-text-upcoming") : h.getAttribute("data-text-past"); }
+  });
+})();
+</script>
