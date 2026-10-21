@@ -1,34 +1,20 @@
 {%- comment -%}
-  Recent posts for the home page: the newest post in _posts as a card, the next ones as date + title lines.
-  LinkedIn entries (front matter `link:`) open the LinkedIn post; other posts open their page on this site.
-  If the newest post has body text, its first lines are shown in the card and fade out.
+  Home page "Recent Posts": the newest posts as dated rows (same layout as the talks section).
+  Date column: month and year, plus the LinkedIn icon for LinkedIn entries (front matter `link:`).
+  LinkedIn entries open the LinkedIn post; other posts open their page on this site.
   Usage in a Markdown page: {% include latest-post.html %}  or  {% include latest-post.html count=4 %}
 {%- endcomment -%}
 {%- include base_path -%}
 {%- assign count = include.count | default: 3 -%}
-<div class="post-preview-group" markdown="0">
+<div class="dated-list" markdown="0">
 {%- for post in site.posts limit: count -%}
-{%- if post.link -%}{%- assign post_href = post.link -%}{%- else -%}{%- capture post_href -%}{{ base_path }}{{ post.url }}{%- endcapture -%}{%- endif -%}
-{%- if forloop.first %}
-{%- assign post_body = post.content | strip_html | strip %}
-<article class="post-preview">
-{% include post-meta.html %}
-<h3 class="post-preview__title"><a href="{{ post_href }}">{{ post.title }}</a></h3>
-{%- if post.excerpt %}
-<p class="post-preview__excerpt">{{ post.excerpt | markdownify | strip_html | strip }}</p>
-{%- endif %}
-{%- if post_body != "" %}
-<div class="post-preview__body">{{ post.content }}</div>
-{%- endif %}
+{%- if post.link -%}{%- assign post_href = post.link -%}{%- else -%}{%- capture post_href -%}{{ base_path }}{{ post.url }}{%- endcapture -%}{%- endif %}
+<article class="dated-row">
+  <div class="dated-row__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>{% if post.link %}<span>· <i class="fab fa-linkedin" aria-hidden="true" title="LinkedIn"></i><span class="sr-only">LinkedIn</span></span>{% endif %}</div>
+  <div class="dated-row__body">
+    <p class="dated-row__title"><a href="{{ post_href }}">{{ post.title }}</a></p>
+    {% if post.excerpt %}<p class="dated-row__detail">{{ post.excerpt | markdownify | strip_html | strip }}</p>{% endif %}
+  </div>
 </article>
-{%- if forloop.last == false %}
-<ul class="post-preview-list">
-{%- endif %}
-{%- else %}
-<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time><a href="{{ post_href }}">{{ post.title }}</a></li>
-{%- if forloop.last %}
-</ul>
-{%- endif %}
-{%- endif %}
 {%- endfor %}
 </div>

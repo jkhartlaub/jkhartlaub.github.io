@@ -1,23 +1,21 @@
 {%- comment -%}
-  Home page talks section: all upcoming talks (soonest first), then the last `count` past talks (default 3).
-  Heading: "Past & Upcoming Talks" if any talk is upcoming, else "Past Talks".
-  Usage in a Markdown page: {% include recent-talks.html %}  or  {% include recent-talks.html count=4 %}
+  Home page section for upcoming talks (soonest first). Rendered only if at least one talk is dated today or later
+  at build time; in the browser, _includes/upcoming-script.html hides talks that have passed since the last build,
+  and the whole section once none is left.
+  Usage in a Markdown page: {% include recent-talks.html %}
 {%- endcomment -%}
-{%- assign count = include.count | default: 3 -%}
 {%- assign build_day = site.time | date: "%Y%m%d" | plus: 0 -%}
 {%- assign talks_asc = site.talks | sort: "date" -%}
-{%- assign talks_desc = talks_asc | reverse -%}
 {%- assign n_up = 0 -%}
 {%- for t in talks_asc -%}{%- assign t_day = t.date | date: "%Y%m%d" | plus: 0 -%}{%- if t_day >= build_day -%}{%- assign n_up = n_up | plus: 1 -%}{%- endif -%}{%- endfor -%}
-<h1 id="talks" data-text-upcoming="Past &amp; Upcoming Talks" data-text-past="Past Talks">{% if n_up > 0 %}Past &amp; Upcoming Talks{% else %}Past Talks{% endif %}</h1>
-<div class="dated-list" data-upcoming-list data-reorder data-max-past="{{ count }}" data-heading="talks" markdown="0">
+{%- if n_up > 0 -%}
+<section id="upcoming-talks" markdown="0">
+<h1>Let’s connect here</h1>
+<div class="dated-list" data-upcoming-list data-reorder data-max-past="0" data-hide-if-none="upcoming-talks">
 {%- for t in talks_asc -%}{%- assign t_day = t.date | date: "%Y%m%d" | plus: 0 -%}{%- if t_day >= build_day %}
 {% include talk-row.html talk=t %}
-{%- endif -%}{%- endfor -%}
-{%- assign shown = 0 -%}
-{%- for t in talks_desc -%}{%- assign t_day = t.date | date: "%Y%m%d" | plus: 0 -%}{%- if t_day < build_day and shown < count %}
-{% include talk-row.html talk=t %}
-{%- assign shown = shown | plus: 1 -%}
 {%- endif -%}{%- endfor %}
 </div>
+</section>
 {% include upcoming-script.html %}
+{%- endif -%}

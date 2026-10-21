@@ -1,27 +1,11 @@
 /* ==========================================================================
-   RECENT POSTS (home page, _includes/latest-post.html)
-   Newest post as a card, clickable as a whole via the title link's ::after
-   overlay (links inside the body preview sit above the overlay);
-   older posts as date + title lines below.
-   The archive lists (blog posts, tags, related) use the same meta line,
-   title and excerpt without the box (.post-item).
+   POST META AND ARCHIVE ENTRIES
+   .post-meta: source and date line (_includes/post-meta.html), used by the related-posts grid.
+   .post-item: publication entries and related-post entries (_includes/archive-single.html).
+   The home page lists and the blog list use the dated rows in _dated-list.scss.
    ========================================================================== */
 
-.post-preview-group {
-  margin: 1.5em 0 2em;
-}
-
-.post-preview {
-  position: relative;
-  padding: 1em 1.25em;
-  border: 1px solid var(--global-border-color);
-
-  p {
-    margin: 0;
-  }
-}
-
-/* Source and date line, shared by the card and the archive lists (_includes/post-meta.html) */
+/* Source and date line (_includes/post-meta.html) */
 .post-meta {
   font-family: $monospace;
   font-size: 1em;
@@ -32,94 +16,6 @@
   .fab,
   .fas {
     margin-right: 0.15em;
-  }
-}
-
-.page__content .post-preview__title {
-  margin: 0 0 0.45em;
-  font-size: $type-size-4;
-  line-height: 1.25;
-
-  a {
-    color: var(--global-text-color);
-    text-decoration: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-    }
-  }
-}
-
-.post-preview:hover .post-preview__title a,
-.post-preview__title a:focus {
-  color: var(--global-link-color);
-}
-
-.post-preview__excerpt {
-  color: var(--global-text-color-light);
-}
-
-.post-preview__body {
-  position: relative;
-  max-height: 9.5em;
-  margin-top: 0.8em;
-  overflow: hidden;
-  font-size: 0.9em;
-  line-height: 1.55;
-  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent);
-  mask-image: linear-gradient(to bottom, #000 45%, transparent);
-
-  p {
-    margin: 0 0 0.7em;
-  }
-
-  a {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 0.5em;
-    font-size: 1em;
-    border: 0;
-    padding: 0;
-  }
-
-  img, figure, hr, .footnotes {
-    display: none;
-  }
-}
-
-.post-preview-list {
-  margin: 0.9em 0 0;
-  padding: 0;
-  list-style: none;
-
-  li {
-    display: flex;
-    gap: 1em;
-    align-items: baseline;
-    margin: 0 0 0.45em;
-  }
-
-  time {
-    flex: none;
-    min-width: 7.5em;
-    font-family: $monospace;
-    font-size: $type-size-6;
-    color: var(--global-text-color-light);
-  }
-
-  a {
-    color: var(--global-text-color);
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: var(--global-link-color);
-    }
   }
 }
 

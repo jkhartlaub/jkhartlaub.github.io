@@ -1,8 +1,10 @@
 {%- comment -%}
   The site is only rebuilt on push, so "upcoming" is recomputed in the browser against today's date.
   Lists with data-upcoming-list: rows with data-date get .is-upcoming (date today or later).
-  With data-reorder: upcoming rows first (soonest on top), then past rows (newest on top), at most data-max-past past rows shown.
+  With data-reorder: upcoming rows first (soonest on top), then past rows (newest on top);
+  data-max-past limits the past rows shown (0 = none, attribute missing = all).
   data-heading names the id of a heading whose text switches between data-text-upcoming and data-text-past.
+  data-hide-if-none names the id of an element that is hidden when no row is upcoming.
   Without JavaScript the build-time state stays.
 {%- endcomment -%}
 <script>
@@ -19,14 +21,16 @@
       (isUp ? up : past).push({ d: d, row: row });
     });
     if (list.hasAttribute("data-reorder")) {
-      var maxPast = parseInt(list.getAttribute("data-max-past") || "0", 10);
+      var maxPast = list.hasAttribute("data-max-past") ? parseInt(list.getAttribute("data-max-past"), 10) : Infinity;
       up.sort(function (a, b) { return a.d - b.d; });
       past.sort(function (a, b) { return b.d - a.d; });
       up.concat(past).forEach(function (x) { list.appendChild(x.row); });
-      past.forEach(function (x, i) { x.row.hidden = maxPast > 0 && i >= maxPast; });
+      past.forEach(function (x, i) { x.row.hidden = i >= maxPast; });
     }
     var h = document.getElementById(list.getAttribute("data-heading") || "");
     if (h) { h.textContent = up.length ? h.getAttribute("data-text-upcoming") : h.getAttribute("data-text-past"); }
+    var box = document.getElementById(list.getAttribute("data-hide-if-none") || "");
+    if (box) { box.hidden = up.length === 0; }
   });
 })();
 </script>

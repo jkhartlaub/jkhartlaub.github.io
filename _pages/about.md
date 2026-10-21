@@ -12,8 +12,6 @@ What computable effects do particles have on each other if there are simply too 
 This is what I am trying to find out in my PhD at the German Aerospace Center (DLR), where I specialize in the development of methods and algorithms for long-range interacting classical and quantum lattices.
 
 
-The Epstein Zeta Function
-======
 My research revolves around the Epstein zeta function, a special function with applications to many-body lattice systems with many exciting properties. It is a broad generalization of the famous Riemann zeta function, whose zeros are the subject of one of the Millennium Problems.
 
 {% include recent-talks.html %}

@@ -5,7 +5,7 @@
    ========================================================================== */
 
 .dated-list {
-  margin: 0.8em 0 0;
+  margin: 0.8em 0 1.5em;
 }
 
 .dated-row {
@@ -93,4 +93,9 @@
 
 .is-upcoming .dated-row__tag {
   display: inline-block;
+}
+
+/* Home page section lists only upcoming talks, so the tag adds nothing there */
+#upcoming-talks .dated-row__tag {
+  display: none;
 }
