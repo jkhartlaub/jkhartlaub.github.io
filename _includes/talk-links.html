@@ -1,0 +1,28 @@
+{%- comment -%}
+  Links and references at the end of a talk page (_layouts/talk.html); fields: see _includes/talk-details.html.
+  References are rendered from the publication's front matter: authors (from citation), year, title linked to the paper, venue.
+{%- endcomment -%}
+{%- include base_path -%}
+{%- if page.slides or page.event_url or page.links -%}
+<h2 id="links">Links</h2>
+<ul class="talk-links">
+  {% if page.slides %}<li><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i><a href="{{ base_path }}{{ page.slides }}">Slides (PDF)</a></li>{% endif %}
+  {% if page.event_url %}<li><i class="fas fa-fw fa-calendar" aria-hidden="true"></i><a href="{{ page.event_url }}">Event website</a></li>{% endif %}
+  {% for l in page.links %}<li><i class="fas fa-fw fa-link" aria-hidden="true"></i><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+</ul>
+{%- endif -%}
+{%- if page.references -%}
+<h2 id="references">References</h2>
+<ol class="talk-references">
+  {%- for ref in page.references -%}
+  {%- assign ref_url = "/publication/" | append: ref -%}
+  {%- assign pub = site.publications | where: "permalink", ref_url | first -%}
+  {%- if pub -%}
+  {%- assign pub_authors = pub.citation | split: " (" | first | replace: "Busse, J. K.", "<strong>Busse, J. K.</strong>" | replace: "Hartlaub, J. K.", "<strong>Hartlaub, J. K.</strong>" %}
+  <li>{{ pub_authors }} ({{ pub.date | date: "%Y" }}). <a href="{{ pub.link }}">{{ pub.title }}</a>. <em>{{ pub.venue }}</em>.</li>
+  {%- else %}
+  <li>Missing publication: {{ ref }}</li>
+  {%- endif -%}
+  {%- endfor %}
+</ol>
+{%- endif -%}

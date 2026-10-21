@@ -1,0 +1,29 @@
+{%- comment -%}
+  Fact block at the top of a talk page (_layouts/talk.html). Every row is optional except venue and date.
+  Front matter of a talk (files in _talks/):
+    title:      talk title
+    type:       e.g. "Conference talk", "Seminar presentation", "Talk", "Poster"
+    venue:      event or seminar, shown first in lists
+    location:   city, country (or building)
+    date:       YYYY-MM-DD
+    session:    optional, e.g. "MAR-T47"
+    room:       optional
+    time:       optional, e.g. "Thursday, 4:36 PM"
+    speakers:   optional, only when the talk was shared
+    slides:     optional, path of the PDF, e.g. /files/26-06-17.pdf
+    event_url:  optional, website of the event
+    links:      optional list of further links, each with label and url
+    references: optional list of publications, by their permalink name, e.g. epsteinlib
+                (= the part after /publication/); numbered in this order
+  The page body (Markdown) is free text: abstract, notes, "Joint work with ...".
+{%- endcomment -%}
+<dl class="talk-facts">
+  <dt>Venue</dt><dd>{% if page.event_url %}<a href="{{ page.event_url }}">{{ page.venue }}</a>{% else %}{{ page.venue }}{% endif %}</dd>
+  {% if page.type %}<dt>Type</dt><dd>{{ page.type }}</dd>{% endif %}
+  {% if page.location %}<dt>Location</dt><dd>{{ page.location }}</dd>{% endif %}
+  <dt>Date</dt><dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></dd>
+  {% if page.session %}<dt>Session</dt><dd>{{ page.session }}</dd>{% endif %}
+  {% if page.room %}<dt>Room</dt><dd>{{ page.room }}</dd>{% endif %}
+  {% if page.time %}<dt>Time</dt><dd>{{ page.time }}</dd>{% endif %}
+  {% if page.speakers %}<dt>Speakers</dt><dd>{{ page.speakers }}</dd>{% endif %}
+</dl>

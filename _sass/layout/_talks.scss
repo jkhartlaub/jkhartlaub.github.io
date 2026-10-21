@@ -1,0 +1,51 @@
+/* ==========================================================================
+   TALK PAGES (_layouts/talk.html, _includes/talk-details.html, _includes/talk-links.html)
+   Fact block in the date-column style of the CV and talk lists.
+   ========================================================================== */
+
+.talk-facts {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  gap: 0.25em 1.2em;
+  margin: 0.8em 0 1.5em;
+
+  dt {
+    font-family: $monospace;
+    font-size: 0.8em;
+    font-weight: normal;
+    color: var(--global-text-color-light);
+    padding-top: 0.2em;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  @include breakpoint(max-width $small) {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    dd {
+      margin-bottom: 0.4em;
+    }
+  }
+}
+
+.talk-links {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+
+  li {
+    margin: 0 0 0.3em;
+  }
+
+  i {
+    color: var(--global-text-color-light);
+    margin-right: 0.4em;
+  }
+}
+
+.talk-references li {
+  margin-bottom: 0.5em;
+}
