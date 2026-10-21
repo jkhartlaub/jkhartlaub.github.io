@@ -1,0 +1,14 @@
+{%- comment -%} CV rows for publications: date, title linked to the paper, authors and venue. Usage: {% include cv-publications.html pubs=list %} {%- endcomment -%}
+{%- include base_path -%}
+<div class="dated-list">
+{%- for p in include.pubs %}
+{%- assign p_authors = p.citation | split: " (" | first | replace: "Busse, J. K.", "<strong>Busse, J. K.</strong>" | replace: "Hartlaub, J. K.", "<strong>Hartlaub, J. K.</strong>" %}
+<article class="dated-row dated-row--wide">
+  <div class="dated-row__date"><time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %Y" }}</time></div>
+  <div class="dated-row__body">
+    <p class="dated-row__title"><a href="{% if p.link %}{{ p.link }}{% else %}{{ base_path }}{{ p.url }}{% endif %}">{{ p.title }}</a></p>
+    <p class="dated-row__sub">{{ p_authors }} <em>{{ p.venue }}</em></p>
+  </div>
+</article>
+{%- endfor %}
+</div>

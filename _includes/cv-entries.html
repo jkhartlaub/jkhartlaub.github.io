@@ -1,0 +1,13 @@
+{%- comment -%} CV rows from _data/cv_entries.yml. Usage: {% include cv-entries.html entries=site.data.cv_entries.education %} {%- endcomment -%}
+<div class="dated-list">
+{%- for e in include.entries %}
+<article class="dated-row dated-row--wide">
+  <div class="dated-row__date"><span>{{ e.dates }}</span></div>
+  <div class="dated-row__body">
+    <p class="dated-row__title">{{ e.title }}</p>
+    {% if e.place %}<p class="dated-row__sub">{{ e.place }}</p>{% endif %}
+    {% for d in e.details %}<p class="dated-row__detail">{{ d }}</p>{% endfor %}
+  </div>
+</article>
+{%- endfor %}
+</div>

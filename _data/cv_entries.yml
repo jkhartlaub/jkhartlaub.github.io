@@ -1,0 +1,52 @@
+# CV entries for _pages/cv.html (rendered by _includes/cv-entries.html), read as site.data.cv_entries.
+# (Not named cv.yml: the theme's _data/cv.json already occupies site.data.cv.)
+# Each entry: dates, title, place, optional details (list, one gray line each).
+# Publications, talks and teaching on the CV page come from their collections.
+
+education:
+  - dates: "10/2019 – 2023"
+    title: "M.S. in Mathematics"
+    place: "Heinrich Heine University Düsseldorf"
+    details:
+      - "GPA: 1.4"
+  - dates: "10/2019 – 09/2022"
+    title: "B.M. in Choral Conducting"
+    place: "Robert Schumann Hochschule Düsseldorf"
+  - dates: "10/2017 – 09/2018"
+    title: "Exchange year in Conducting"
+    place: "Glinka Conservatory Nizhny Novgorod (Russia)"
+    details:
+      - "Conducting exam: 5.0 (best grade)"
+  - dates: "2015 – 2019"
+    title: "B.A. in Mathematics and Music Education"
+    place: "Folkwang University of the Arts/University of Duisburg-Essen"
+    details:
+      - "Bachelor's degree grade: 1.75"
+  - dates: "2002 – 2015"
+    title: "High School Diploma"
+    place: "Free Waldorf School Heidelberg"
+    details:
+      - "Final grade: 1.5, Mathematics grade: 14 points"
+      - "DMV High School Award for outstanding performance in Mathematics"
+
+work:
+  - dates: "12/2023 – present"
+    title: "PhD Candidate"
+    place: "German Aerospace Center (DLR), Institute of Software Technology, High-Performance Computing Department"
+    details:
+      - "Specializing in numerical analysis in high-precision many-body physics"
+  - dates: "2021, 2022, 2023"
+    title: "Research Assistant"
+    place: "Heinrich Heine University Düsseldorf"
+    details:
+      - "Duties: Correcting Analysis and Linear Algebra exercise sheets, conducting holiday tutorials, creating learning materials for mathematics students"
+  - dates: "2018, 2019, 2020"
+    title: "Student Assistant"
+    place: "University of Duisburg-Essen"
+    details:
+      - "Duties: Correcting geometry exercise sheets, leading exercise groups for preparatory courses, creating learning materials for first-year students"
+  - dates: "2022 – 2023"
+    title: "Assistant to the Choral Director"
+    place: "Wuppertal Opera"
+    details:
+      - "Duties: Planning, organizing, and executing choir projects in opera productions, rehearsing with children's, youth, and adult choirs"

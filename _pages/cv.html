@@ -1,0 +1,48 @@
+---
+layout: archive
+title: "CV"
+permalink: /cv/
+author_profile: true
+redirect_from:
+  - /resume
+---
+
+{% include base_path %}
+
+<h2 id="education" class="archive__subtitle">Education</h2>
+{% include cv-entries.html entries=site.data.cv_entries.education %}
+
+<h2 id="work-experience" class="archive__subtitle">Work experience</h2>
+{% include cv-entries.html entries=site.data.cv_entries.work %}
+
+{% assign pubs = site.publications | sort: "date" | reverse %}
+{% assign pubs_published = pubs | where_exp: "p", "p.category != 'preprints'" %}
+{% assign pubs_preprints = pubs | where: "category", "preprints" %}
+<h2 id="publications" class="archive__subtitle">Publications</h2>
+{% include cv-publications.html pubs=pubs_published %}
+
+<h2 id="preprints" class="archive__subtitle">Preprints</h2>
+{% include cv-publications.html pubs=pubs_preprints %}
+
+<h2 id="talks" class="archive__subtitle">Talks</h2>
+<div class="dated-list" data-upcoming-list>
+{% assign talks_desc = site.talks | sort: "date" | reverse %}
+{% for t in talks_desc %}
+  {% include talk-row.html talk=t date_format="%b %Y" show_title=true wide=true %}
+{% endfor %}
+</div>
+{% include upcoming-script.html %}
+
+<h2 id="teaching" class="archive__subtitle">Teaching</h2>
+<div class="dated-list">
+{% assign teaching_desc = site.teaching | sort: "date" | reverse %}
+{% for c in teaching_desc %}
+<article class="dated-row dated-row--wide">
+  <div class="dated-row__date"><time datetime="{{ c.date | date_to_xmlschema }}">{{ c.date | date: "%b %Y" }}</time></div>
+  <div class="dated-row__body">
+    <p class="dated-row__title"><a href="{{ base_path }}{{ c.url }}">{{ c.title }}</a></p>
+    <p class="dated-row__sub">{{ c.type }}, {{ c.venue }}</p>
+  </div>
+</article>
+{% endfor %}
+</div>
