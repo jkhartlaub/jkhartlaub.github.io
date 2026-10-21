@@ -4,15 +4,15 @@
 # Publications, talks and teaching on the CV page come from their collections.
 
 education:
-  - dates: "10/2019 – 2023"
+  - dates: "Oct 2019 –  Nov 2023"
     title: "M.S. in Mathematics"
     place: "Heinrich Heine University Düsseldorf"
     details:
       - "GPA: 1.4"
-  - dates: "10/2019 – 09/2022"
+  - dates: "Oct 2019 – Sep 2022"
     title: "B.M. in Choral Conducting"
     place: "Robert Schumann Hochschule Düsseldorf"
-  - dates: "10/2017 – 09/2018"
+  - dates: "Oct 2017 – Sep 2018"
     title: "Exchange year in Conducting"
     place: "Glinka Conservatory Nizhny Novgorod (Russia)"
     details:
@@ -30,7 +30,7 @@ education:
       - "DMV High School Award for outstanding performance in Mathematics"
 
 work:
-  - dates: "12/2023 – present"
+  - dates: "Dec 2023 – present"
     title: "PhD Candidate"
     place: "German Aerospace Center (DLR), Institute of Software Technology, High-Performance Computing Department"
     details:
