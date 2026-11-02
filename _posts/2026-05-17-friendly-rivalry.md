@@ -7,6 +7,8 @@ tags:
   - quantum computing
   - scientific computing
 excerpt: 'On the competition among researchers to replicate quantum-advantage results on purely classical machines, often through tensor methods.'
+talks:
+  - 2026-05-12-generalized-zeta-functions
 references:
   - epstein-zeta-method-many-body
   - exact-lattice-summations-lennard-jones

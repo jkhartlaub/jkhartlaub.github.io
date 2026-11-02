@@ -1,7 +1,7 @@
 /* ==========================================================================
    DATED ROWS: date column on the left, entry on the right.
-   Used by the blog list (_includes/archive-single.html), talks (_includes/talk-row.html,
-   _includes/recent-talks.html) and the CV. On phones the date moves above the entry.
+   Used by the blog list (_includes/archive-single.html), talks (_includes/talk-row.html),
+   the home page Recent list (_includes/latest-post.html), Related sections and the CV. On phones the date moves above the entry.
    ========================================================================== */
 
 .dated-list {
@@ -95,7 +95,3 @@
   display: inline-block;
 }
 
-/* Home page section lists only upcoming talks, so the tag adds nothing there */
-#upcoming-talks .dated-row__tag {
-  display: none;
-}
