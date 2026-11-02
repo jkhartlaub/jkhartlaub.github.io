@@ -11,6 +11,7 @@ date: 2026-07-01
 venue: 'IMA Journal of Numerical Analysis'
 link: 'https://doi.org/10.1093/imanum/drag057'
 arxiv: '2412.16317'
+open_access: false
 arxiv_version: 2
 arxiv_date: 2026-06-12
 citation: 'Buchheit, A. A., Busse, J. K., & Gutendorf, R. (2026). "Computation and properties of the Epstein zeta function with applications to quantum systems." <i>IMA Journal of Numerical Analysis</i>, drag057. DOI: <a href="https://doi.org/10.1093/imanum/drag057">10.1093/imanum/drag057</a>'
