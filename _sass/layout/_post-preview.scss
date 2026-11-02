@@ -75,7 +75,12 @@
   margin-bottom: 0.25em;
 }
 
-/* Links block in the header of a publication page (_layouts/single.html): space before the abstract */
+/* Venue line and links block in the header of a publication page (_layouts/single.html):
+   links directly under the venue, space before the abstract */
+.page__venue {
+  margin-bottom: 0;
+}
+
 .page__pub-links {
   margin-bottom: 1.5em;
 }
