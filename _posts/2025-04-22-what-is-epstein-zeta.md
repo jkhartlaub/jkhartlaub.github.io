@@ -2,6 +2,9 @@
 title: "What Does the Epstein Zeta Function Actually Do?"
 date: 2025-04-22
 permalink: /posts/2025/04/what-does-epstein-zeta-do/
+papers:
+  - computation-properties-epstein-zeta
+  - epsteinlib
 excerpt: "The Riemann hypothesis does not hold for the Epstein zeta function, though the physical applications are abundant."
 tags:
   - epstein zeta

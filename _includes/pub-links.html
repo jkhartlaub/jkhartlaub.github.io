@@ -1,0 +1,14 @@
+{%- comment -%}
+  External links of a publication (publications list and publication page):
+  DOI line (or the plain link, e.g. GitHub), then in gray "View on arXiv" with the newest arXiv version and its date.
+  Front matter: link (DOI or other URL), arxiv (e.g. '2504.11989'), arxiv_version (e.g. 2), arxiv_date (date of that version).
+  Usage: {% include pub-links.html pub=post %}
+{%- endcomment -%}
+{%- assign pl = include.pub -%}
+{%- if pl.link contains "doi.org/" -%}{%- assign pl_doi = pl.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pl_doi = nil -%}{%- endif -%}
+{%- if pl.link %}
+<p class="pub-links">{% if pl_doi %}DOI: <a href="{{ pl.link }}">{{ pl_doi }}</a>{% else %}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{% endif %}</p>
+{%- endif %}
+{%- if pl.arxiv %}
+<p class="pub-links pub-links--secondary">View on <a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %} <span aria-hidden="true">·</span> v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}</p>
+{%- endif %}

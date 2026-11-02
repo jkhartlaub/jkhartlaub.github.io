@@ -1,0 +1,23 @@
+{%- comment -%}
+  Numbered reference list at the end of a post or talk page; item n gets the anchor #ref-n.
+  Front matter `references:` is a list; each entry is either
+    - a publication of this site, by its permalink name (the part after /publication/), e.g. epsteinlib
+    - an external source: url, optional citation (text before the link), optional note (shown in parentheses)
+  Publications cited here also count as the page's related papers (see _includes/related.html).
+{%- endcomment -%}
+{%- if page.references -%}
+<h2 id="references">References</h2>
+<ol class="references">
+  {%- for ref in page.references %}
+  <li id="ref-{{ forloop.index }}">
+  {%- if ref.url -%}
+    {% if ref.citation %}{{ ref.citation }} {% endif %}<a href="{{ ref.url }}">{{ ref.url | remove: "https://" | remove: "http://" }}</a>{% if ref.note %} ({{ ref.note }}){% endif %}
+  {%- else -%}
+    {%- assign ref_url = "/publication/" | append: ref -%}
+    {%- assign ref_pub = site.publications | where: "permalink", ref_url | first -%}
+    {%- if ref_pub -%}{% include pub-citation.html pub=ref_pub %}{%- else -%}Missing publication: {{ ref }}{%- endif -%}
+  {%- endif -%}
+  </li>
+  {%- endfor %}
+</ol>
+{%- endif -%}

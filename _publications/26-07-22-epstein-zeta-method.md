@@ -11,6 +11,9 @@ excerpt: 'This paper presents an efficiently computable representation of many-b
 date: 2026-07-22
 venue: 'Numerische Mathematik'
 link: 'https://doi.org/10.1007/s00211-026-01558-y'
+arxiv: '2504.11989'
+arxiv_version: 2
+arxiv_date: 2026-06-12
 citation: 'Buchheit, A. A., & Busse, J. K. (2026). "Epstein zeta method for many-body lattice sums." <i>Numerische Mathematik</i>. DOI: <a href="https://doi.org/10.1007/s00211-026-01558-y">10.1007/s00211-026-01558-y</a>'
 ---
 

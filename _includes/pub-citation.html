@@ -1,0 +1,9 @@
+{%- comment -%}
+  One publication as a reference: authors (own name in bold, from `citation`), year, title linked to its page on this site, venue, DOI.
+  Usage: {% include pub-citation.html pub=pub %}
+{%- endcomment -%}
+{%- include base_path -%}
+{%- assign pc = include.pub -%}
+{%- assign pc_authors = pc.citation | split: " (" | first | replace: "Busse, J. K.", "<strong>Busse, J. K.</strong>" | replace: "Hartlaub, J. K.", "<strong>Hartlaub, J. K.</strong>" -%}
+{%- if pc.link contains "doi.org/" -%}{%- assign pc_doi = pc.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pc_doi = nil -%}{%- endif -%}
+{{ pc_authors }} ({{ pc.date | date: "%Y" }}). <a href="{{ base_path }}{{ pc.url }}">{{ pc.title }}</a>. <em>{{ pc.venue }}</em>.{% if pc_doi %} DOI: <a href="{{ pc.link }}">{{ pc_doi }}</a>{% elsif pc.link %} <a href="{{ pc.link }}">{{ pc.link | remove: "https://" | remove: "http://" }}</a>{% endif %}
