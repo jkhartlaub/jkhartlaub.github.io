@@ -46,7 +46,7 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         {% if page.collection == 'posts' and page.link %}
-          <p class="pub-links pub-links--secondary">View on <a href="{{ page.link }}">LinkedIn</a></p>
+          <p class="pub-links pub-links--secondary">This post first appeared on <a href="{{ page.link }}">LinkedIn</a> and was formatted for this blog's style with the help of AI; the wording remains unchanged.</p>
         {% endif %}    
         </header>
       {% endunless %}
