@@ -11,6 +11,9 @@ excerpt: 'This paper provides a rigorous analysis of Bain-type cuboidal lattice 
 date: 2025-09-02
 venue: 'Journal of Chemical Physics'
 link: 'https://doi.org/10.1063/5.0276677'
+arxiv: '2504.07338'
+arxiv_version: 1
+arxiv_date: 2025-04-09
 citation: 'Robles-Navarro, A., Cooper, S., Buchheit, A. A., Busse, J. K., Burrows, A., Smits, O., & Schwerdtfeger, P. (2025). "Exact lattice summations for Lennard-Jones potentials coupled to a three-body Axilrod-Teller-Muto term applied to cuboidal phase transitions." <i>J. Chem. Phys.</i> 163, 094104. DOI: <a href="https://doi.org/10.1063/5.0276677">10.1063/5.0276677</a>'
 ---
 

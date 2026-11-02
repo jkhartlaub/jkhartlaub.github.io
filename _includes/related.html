@@ -1,0 +1,53 @@
+{%- comment -%}
+  "Related" section at the end of posts, publications and talks. Every relation is stored once, on one side:
+    post  -> papers:  references (own publications) and `papers:` (related, not cited)
+    post  -> talks:   `talks:`  (talk permalink names, the part after /talks/)
+    post  -> posts:   `posts:`  (slugs of other posts, i.e. the file name without date; stored on one of the two)
+    talk  -> papers:  references
+  The other side is computed here. Related lists every connected item as an internal link,
+  including own publications that also appear under References.
+{%- endcomment -%}
+{%- assign rel_papers = "" -%}
+{%- assign rel_posts = "" -%}
+{%- assign rel_talks = "" -%}
+
+{%- if page.collection == "posts" -%}
+  {%- capture rel_papers -%}
+    {%- for s in page.references -%}{%- unless s.authors or s.title or s.url or s.doi -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endunless -%}{%- endfor -%}
+    {%- for s in page.papers -%}{%- unless page.references contains s -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endunless -%}{%- endfor -%}
+  {%- endcapture -%}
+  {%- capture rel_talks -%}{%- for s in page.talks -%}{%- assign u = "/talks/" | append: s -%}{%- assign x = site.talks | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+  {%- capture rel_posts -%}
+    {%- for s in page.posts -%}{%- assign x = site.posts | where: "slug", s | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}
+    {%- for x in site.posts -%}{%- if x.posts contains page.slug -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}
+  {%- endcapture -%}
+
+{%- elsif page.collection == "publications" -%}
+  {%- assign me = page.permalink | split: "/" | last -%}
+  {%- capture rel_posts -%}{%- for x in site.posts -%}{%- if x.references contains me or x.papers contains me -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+  {%- capture rel_talks -%}{%- for x in site.talks -%}{%- if x.references contains me -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+
+{%- elsif page.collection == "talks" -%}
+  {%- assign me = page.permalink | remove_first: "/talks/" -%}
+  {%- capture rel_papers -%}{%- for s in page.references -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+  {%- capture rel_posts -%}{%- for x in site.posts -%}{%- if x.talks contains me -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- endif -%}
+
+{%- assign rel_papers = rel_papers | strip -%}
+{%- assign rel_posts = rel_posts | strip -%}
+{%- assign rel_talks = rel_talks | strip -%}
+{%- if rel_papers != "" or rel_posts != "" or rel_talks != "" -%}
+<h2 id="related">Related</h2>
+{%- if rel_papers != "" %}
+<h3 class="related__title">Papers</h3>
+<div class="dated-list">{{ rel_papers }}</div>
+{%- endif -%}
+{%- if rel_posts != "" %}
+<h3 class="related__title">Posts</h3>
+<div class="dated-list">{{ rel_posts }}</div>
+{%- endif -%}
+{%- if rel_talks != "" %}
+<h3 class="related__title">Talks</h3>
+<div class="dated-list">{{ rel_talks }}</div>
+{%- endif -%}
+{%- endif -%}

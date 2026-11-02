@@ -1,14 +1,14 @@
 {%- comment -%}
   Home page "Recent Posts": the newest posts as dated rows (same layout as the talks section).
   Date column: month and year, plus the LinkedIn icon for LinkedIn entries (front matter `link:`).
-  LinkedIn entries open the LinkedIn post; other posts open their page on this site.
+  Every entry opens its page on this site; LinkedIn posts link to LinkedIn from there.
   Usage in a Markdown page: {% include latest-post.html %}  or  {% include latest-post.html count=4 %}
 {%- endcomment -%}
 {%- include base_path -%}
 {%- assign count = include.count | default: 3 -%}
 <div class="dated-list" markdown="0">
 {%- for post in site.posts limit: count -%}
-{%- if post.link -%}{%- assign post_href = post.link -%}{%- else -%}{%- capture post_href -%}{{ base_path }}{{ post.url }}{%- endcapture -%}{%- endif %}
+{%- capture post_href -%}{{ base_path }}{{ post.url }}{%- endcapture %}
 <article class="dated-row">
   <div class="dated-row__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>{% if post.link %}<span>· <i class="fab fa-linkedin" aria-hidden="true" title="LinkedIn"></i><span class="sr-only">LinkedIn</span></span>{% endif %}</div>
   <div class="dated-row__body">

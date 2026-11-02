@@ -48,12 +48,6 @@
     font-size: 1em;
   }
 
-  .post-item__links {
-    margin: 0.25em 0 0;
-    font-size: 0.9em;
-    color: var(--global-text-color-light);
-  }
-
   .post-item__excerpt {
     margin: 0;
     font-size: 1em;
@@ -63,4 +57,20 @@
 
 .grid__item .post-item .archive__item-title {
   font-size: $type-size-5;
+}
+
+/* External links of a publication (_includes/pub-links.html) and the LinkedIn line of a post:
+   DOI line, then the gray "View on arXiv" / "View on LinkedIn" line */
+.pub-links {
+  margin: 0.25em 0 0 !important;
+  font-size: 0.9em;
+}
+
+.pub-links--secondary {
+  color: var(--global-text-color-light);
+}
+
+/* Author line on a publication page (_layouts/single.html) */
+.page__authors {
+  margin-bottom: 0.25em;
 }

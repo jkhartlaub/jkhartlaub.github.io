@@ -7,6 +7,7 @@ excerpt: 'This paper investigates the hcp-to-fcc phase transition along the Burg
 date: 2026-10-16
 venue: 'arXiv'
 link: 'https://doi.org/10.48550/arXiv.2610.22855'
+arxiv: '2610.22855'
 citation: 'Maltby, T. W., Robles-Navarro, A., Hartlaub, J. K., Buchheit, A. A., Wilhelmsen, Ø., Hammer, M., & Schwerdtfeger, P. (2026). "Pressure-Dependent hcp-to-fcc Phase Transition Path Derived from Exact Lattice Summations over Inverse Power Law Potentials." <i>arXiv preprint</i> arXiv:2610.22855. DOI: <a href="https://doi.org/10.48550/arXiv.2610.22855">10.48550/arXiv.2610.22855</a>'
 ---
 

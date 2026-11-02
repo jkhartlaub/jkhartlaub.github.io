@@ -1,5 +1,6 @@
 /* ==========================================================================
    TALK PAGES (_layouts/talk.html, _includes/talk-details.html, _includes/talk-links.html)
+   and the References / Related sections shared with posts and publications
    Fact block in the date-column style of the CV and talk lists.
    ========================================================================== */
 
@@ -46,6 +47,14 @@
   }
 }
 
-.talk-references li {
+/* References and Related at the end of posts, publications and talks
+   (_includes/references.html, _includes/related.html) */
+.references li {
   margin-bottom: 0.5em;
+}
+
+.related__title {
+  font-size: $type-size-5;
+  color: var(--global-text-color-light);
+  margin-top: 1em;
 }

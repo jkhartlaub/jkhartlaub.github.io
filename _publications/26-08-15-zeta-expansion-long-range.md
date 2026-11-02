@@ -11,6 +11,9 @@ excerpt: 'This paper addresses the efficient computation of power-law-based inte
 date: 2026-08-15
 venue: 'Journal of Computational Physics'
 link: 'https://doi.org/10.1016/j.jcp.2026.114885'
+arxiv: '2509.26274'
+arxiv_version: 3
+arxiv_date: 2026-06-16
 citation: 'Buchheit, A. A., Busse, J. K., Keßler, T., & Rybakov, F. N. (2026). "Zeta Expansion for Long-Range Interactions under Periodic Boundary Conditions with Applications to Micromagnetics." <i>Journal of Computational Physics</i>, 114885. DOI: <a href="https://doi.org/10.1016/j.jcp.2026.114885">10.1016/j.jcp.2026.114885</a>'
 ---
 
