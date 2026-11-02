@@ -74,3 +74,8 @@
 .page__authors {
   margin-bottom: 0.25em;
 }
+
+/* Links block in the header of a publication page (_layouts/single.html): space before the abstract */
+.page__pub-links {
+  margin-bottom: 1.5em;
+}
