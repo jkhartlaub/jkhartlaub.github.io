@@ -121,6 +121,7 @@
 
 .author__name {
   margin: 0;
+  line-height: 1.2;
 
   @include breakpoint($large) {
     margin-top: 10px;
@@ -139,12 +140,12 @@
 }
 
 .author__former-name {
-  margin: 0.2em 0 0;
-  font-size: $type-size-6;
+  margin: 0.35em 0 0;
+  font-size: 0.9em;
   color: var(--global-text-color-light);
 
   @include breakpoint($large) {
-    margin: -6px 0 10px;
+    margin: 0 0 10px;
   }
 }
 

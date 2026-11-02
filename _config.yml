@@ -25,6 +25,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Jonathan Kaspar Hartlaub"
+  name_lines       : ["Jonathan Kaspar", "Hartlaub"] # sidebar: one entry per line, e.g. ["Jonathan", "Kaspar", "Hartlaub"]
   former_name      : "Busse" # shown in gray below the name in the sidebar
   pronouns         : "he / him"  
   bio              : "I am a PhD Candidate at the German Aerospace Center (DLR), specializing in long-range interacting classical and quantum systems"
