@@ -8,6 +8,8 @@ tags:
   - scientific computing
   - epstein zeta
 excerpt: "On the effort of the scientific computing community to fight the curse of dimensionality by drastically reducing the effort needed to simulate physical systems."
+talks:
+  - 2026-04-10-zeta-expansion-lattice-systems
 references:
   - epstein-zeta-method-many-body
   - exact-lattice-summations-lennard-jones
