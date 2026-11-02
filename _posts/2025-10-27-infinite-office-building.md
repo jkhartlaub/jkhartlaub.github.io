@@ -18,4 +18,4 @@ Interestingly, this would be way easier to calculate if the building were infini
 
 This type of problem appears in the calculation of forces in a micro-magnetic film, which can be understood as being very thin but close to infinitely large.
 
-📄 Check out our solution, which we present in our newest preprint! 📄
+Check out our solution, which we present in our newest preprint!

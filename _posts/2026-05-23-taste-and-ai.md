@@ -31,13 +31,13 @@ references:
 ---
 *Taste* might gain significance in mathematical research due to AI.
 
-I find it hard to evaluate the disruptive potential of breakthroughs in the mathematical capabilities of AI due to factors like financial incentives for overblown claims or the possibility that the solutions already exist in the training data 📖
+I find it hard to evaluate the disruptive potential of breakthroughs in the mathematical capabilities of AI due to factors like financial incentives for overblown claims or the possibility that the solutions already exist in the training data.
 
 Last week's announcement from OpenAI about their solution of the unit distance problem [[1](#ref-1)] seems to be the real deal: it's a well-known problem in combinatorics, the proof was found without human guidance [[2](#ref-2)], its correctness is verified by leading experts [[3](#ref-3)], and the methods used in the proof can be build on for tighter bounds [[4](#ref-4)].
 
 In short, I think this will lead to an emphasis on **taste over volume** in mathematical research, the latter being within reach of LLMs.
 
-An example from my research: there are many approaches to the intractable high-dimensional nature of high-precision many-body physics ⚛️ One promising route is starting with a *small simulation*, keeping only the most vital parts and *scaling up*. Though such approaches always hit a wall at some system size, where the scaling outpaces the available computational resources 🧗‍♀️
+An example from my research: there are many approaches to the intractable high-dimensional nature of high-precision many-body physics. One promising route is starting with a *small simulation*, keeping only the most vital parts and *scaling up*. Though such approaches always hit a wall at some system size, where the scaling outpaces the available computational resources.
 
 On the other hand, I find it highly rewarding to start with an *infinitely large system* with lots of structure and work my way down to the physics from there.
 
