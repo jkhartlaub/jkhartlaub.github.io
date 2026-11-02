@@ -1,6 +1,7 @@
 {%- comment -%}
   One talk as a dated row, venue first (talks page, CV, home page).
-  Parameters: talk (required), date_format (default "%b %Y"), show_title (true: talk title as gray line), wide (true: wider date column).
+  Parameters: talk (required), date_format (default "%b %Y"), show_title (true: talk title as gray line), wide (true: wider date column),
+  icon (true: calendar icon after the date, for lists that mix posts and talks).
   The row gets .is-upcoming when the talk date is today or later at build time; _includes/upcoming-script.html corrects it in the browser.
 {%- endcomment -%}
 {%- include base_path -%}
@@ -9,7 +10,7 @@
 {%- assign t_day = t.date | date: "%Y%m%d" | plus: 0 -%}
 {%- assign build_day = site.time | date: "%Y%m%d" | plus: 0 -%}
 <article class="dated-row{% if include.wide %} dated-row--wide{% endif %}{% if t_day >= build_day %} is-upcoming{% endif %}" data-date="{{ t.date | date: '%Y-%m-%d' }}">
-  <div class="dated-row__date"><time datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: t_format }}</time></div>
+  <div class="dated-row__date"><time datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: t_format }}</time>{% if include.icon %}<span>· <i class="fas fa-calendar" aria-hidden="true" title="Talk"></i><span class="sr-only">Talk</span></span>{% endif %}</div>
   <div class="dated-row__body">
     <p class="dated-row__title"><a href="{{ base_path }}{{ t.url }}">{{ t.venue }}</a><span class="dated-row__tag">upcoming</span></p>
     {% if include.show_title %}<p class="dated-row__sub">{{ t.type }}{% if t.location %} · {{ t.location }}{% endif %}</p>

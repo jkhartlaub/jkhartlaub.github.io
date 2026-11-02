@@ -138,6 +138,16 @@
   }
 }
 
+.author__former-name {
+  margin: 0.2em 0 0;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+
+  @include breakpoint($large) {
+    margin: -6px 0 10px;
+  }
+}
+
 .author__pronouns {
   margin: 0;
 

@@ -15,9 +15,7 @@ This is subject of my ongoing PhD at the German Aerospace Center (DLR) and the U
 My research revolves around the Epstein zeta function, a special function with applications to many-body lattice systems with many exciting properties.
 It is a broad generalization of the famous Riemann zeta function, whose zeros are the subject of one of the Millennium Problems.
 
-{% include recent-talks.html %}
-
-Recent Posts
+Recent
 ======
 {% include latest-post.html %}
 
