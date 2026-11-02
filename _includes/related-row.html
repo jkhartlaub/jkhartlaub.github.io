@@ -1,9 +1,9 @@
-{%- comment -%} One row of the Related section: date, LinkedIn icon for LinkedIn posts, title linked to its page on this site; talks as in the talks list (venue first, _includes/talk-row.html). Usage: {% include related-row.html item=x %} {%- endcomment -%}
+{%- comment -%} One row of the Related section: date, title linked to its page on this site; talks as in the talks list (venue first, _includes/talk-row.html). Usage: {% include related-row.html item=x %} {%- endcomment -%}
 {%- include base_path -%}
 {%- assign ri = include.item -%}
 {%- if ri.collection == "talks" -%}{% include talk-row.html talk=ri %}{%- else -%}
 <article class="dated-row">
-  <div class="dated-row__date"><time datetime="{{ ri.date | date_to_xmlschema }}">{{ ri.date | date: "%b %Y" }}</time>{% if ri.collection == "posts" and ri.link %}<span>· <i class="fab fa-linkedin" aria-hidden="true" title="LinkedIn"></i><span class="sr-only">LinkedIn</span></span>{% endif %}</div>
+  <div class="dated-row__date"><time datetime="{{ ri.date | date_to_xmlschema }}">{{ ri.date | date: "%b %Y" }}</time></div>
   <div class="dated-row__body"><p class="dated-row__title"><a href="{{ base_path }}{{ ri.url }}">{{ ri.title }}</a></p></div>
 </article>
 {%- endif -%}

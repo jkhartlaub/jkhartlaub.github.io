@@ -1,6 +1,7 @@
 {%- comment -%}
   Home page "Recent": the newest posts and talks together, newest first (upcoming talks on top, tagged "upcoming").
-  Posts: date (month and year) plus the LinkedIn icon for LinkedIn posts, title, excerpt. Talks: venue first (_includes/talk-row.html).
+  Only list that mixes types, so the date column carries an icon: pen nib for posts, calendar for talks.
+  Posts: date, title, excerpt. Talks: venue first (_includes/talk-row.html).
   Every entry opens its page on this site.
   Usage in a Markdown page: {% include latest-post.html %}  or  {% include latest-post.html count=6 %}
 {%- endcomment -%}
@@ -10,10 +11,10 @@
 <div class="dated-list" markdown="0" data-upcoming-list>
 {%- for post in recent limit: count -%}
 {%- if post.collection == "talks" %}
-{% include talk-row.html talk=post %}
+{% include talk-row.html talk=post icon=true %}
 {%- else %}
 <article class="dated-row">
-  <div class="dated-row__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>{% if post.link %}<span>· <i class="fab fa-linkedin" aria-hidden="true" title="LinkedIn"></i><span class="sr-only">LinkedIn</span></span>{% endif %}</div>
+  <div class="dated-row__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time><span>· <i class="fas fa-pen-nib" aria-hidden="true" title="Post"></i><span class="sr-only">Post</span></span></div>
   <div class="dated-row__body">
     <p class="dated-row__title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></p>
     {% if post.excerpt %}<p class="dated-row__detail">{{ post.excerpt | markdownify | strip_html | strip }}</p>{% endif %}
