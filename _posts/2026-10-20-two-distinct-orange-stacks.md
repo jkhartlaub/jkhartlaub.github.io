@@ -8,10 +8,16 @@ tags:
   - many-body physics
 excerpt: "On the transformation of crystals between close-packed lattices with near-identical lattice sums."
 references:
-  - url: https://doi.org/10.1038/s41598-021-93995-y
-    note: "Scientific Reports"
-  - url: https://doi.org/10.1103/319b-1fv5
-    note: "Phys. Rev. B"
+  - authors: "Dewaele, A., Rosa, A. D., Guignot, N., Andrault, D., Rodrigues, J. E. F. S., & Garbarino, G."
+    year: 2021
+    title: "Stability and equation of state of face-centered cubic and hexagonal close packed phases of argon under pressure"
+    venue: "Scientific Reports 11"
+    doi: "10.1038/s41598-021-93995-y"
+  - authors: "Robles-Navarro, A., Cooper, S., Hauser, A. W., Zehetmair, F., Smits, O. R., & Schwerdtfeger, P."
+    year: 2026
+    title: "Lattice instabilities along the transformation from hexagonal to cuboidal structures in hard- and soft-sphere models"
+    venue: "Physical Review B 113, 024116"
+    doi: "10.1103/319b-1fv5"
   - pressure-dependent-hcp-fcc-transition
   - computation-anisotropic-singular-sums
 ---

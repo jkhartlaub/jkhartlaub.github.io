@@ -8,14 +8,26 @@ tags:
   - ai
 excerpt: "OpenAI's announcement of their solution of the unit distance problem and how this might lead to an emphasis on taste over volume in mathematical research, the latter being within reach of LLMs."
 references:
-  - url: https://openai.com/index/model-disproves-discrete-geometry-conjecture/
-    note: "oai announcement"
-  - url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
-    note: "proof"
-  - url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf
-    note: "companion remarks"
-  - url: https://arxiv.org/html/2605.20579v1
-    note: "improved lower bound"
+  - authors: "OpenAI"
+    year: 2026
+    title: "An OpenAI model has disproved a central conjecture in discrete geometry"
+    venue: "OpenAI"
+    url: "https://openai.com/index/model-disproves-discrete-geometry-conjecture/"
+  - authors: "OpenAI"
+    year: 2026
+    title: "Planar point sets with many unit distances"
+    venue: "OpenAI"
+    url: "https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf"
+  - authors: "Alon, N., Bloom, T. F., Gowers, W. T., Litt, D., Sawin, W., Shankar, A., Tsimerman, J., Wang, V., & Wood, M. M."
+    year: 2026
+    title: "Remarks on the disproof of the unit distance conjecture"
+    venue: "OpenAI"
+    url: "https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf"
+  - authors: "Sawin, W."
+    year: 2026
+    title: "An explicit lower bound for the unit distance problem"
+    venue: "arXiv"
+    doi: "10.48550/arXiv.2605.20579"
 ---
 *Taste* might gain significance in mathematical research due to AI.
 

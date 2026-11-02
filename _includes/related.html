@@ -4,14 +4,18 @@
     post  -> talks:   `talks:`  (talk permalink names, the part after /talks/)
     post  -> posts:   `posts:`  (slugs of other posts, i.e. the file name without date; stored on one of the two)
     talk  -> papers:  references
-  The other side is computed here. Papers already listed under References are not repeated.
+  The other side is computed here. Related lists every connected item as an internal link,
+  including own publications that also appear under References.
 {%- endcomment -%}
 {%- assign rel_papers = "" -%}
 {%- assign rel_posts = "" -%}
 {%- assign rel_talks = "" -%}
 
 {%- if page.collection == "posts" -%}
-  {%- capture rel_papers -%}{%- for s in page.papers -%}{%- unless page.references contains s -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endunless -%}{%- endfor -%}{%- endcapture -%}
+  {%- capture rel_papers -%}
+    {%- for s in page.references -%}{%- unless s.authors or s.title or s.url or s.doi -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endunless -%}{%- endfor -%}
+    {%- for s in page.papers -%}{%- unless page.references contains s -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endunless -%}{%- endfor -%}
+  {%- endcapture -%}
   {%- capture rel_talks -%}{%- for s in page.talks -%}{%- assign u = "/talks/" | append: s -%}{%- assign x = site.talks | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
   {%- capture rel_posts -%}
     {%- for s in page.posts -%}{%- assign x = site.posts | where: "slug", s | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}
@@ -25,6 +29,7 @@
 
 {%- elsif page.collection == "talks" -%}
   {%- assign me = page.permalink | remove_first: "/talks/" -%}
+  {%- capture rel_papers -%}{%- for s in page.references -%}{%- assign u = "/publication/" | append: s -%}{%- assign x = site.publications | where: "permalink", u | first -%}{%- if x -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
   {%- capture rel_posts -%}{%- for x in site.posts -%}{%- if x.talks contains me -%}{% include related-row.html item=x %}{%- endif -%}{%- endfor -%}{%- endcapture -%}
 {%- endif -%}
 

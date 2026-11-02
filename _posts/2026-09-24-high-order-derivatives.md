@@ -12,7 +12,11 @@ references:
   - epsteinlib
   - exact-lattice-summations-lennard-jones
   - epstein-zeta-method-many-body
-  - url: https://arxiv.org/abs/2609.18918
+  - authors: "Buchheit, A. A., & Rupp, A."
+    year: 2026
+    title: "Graph lattice sums and graph zeta functions for long-range interacting quantum lattice models"
+    venue: "arXiv"
+    doi: "10.48550/arXiv.2609.18918"
   - zeta-expansion-long-range-micromagnetics
   - computation-anisotropic-singular-sums
 ---

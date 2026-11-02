@@ -1,21 +1,34 @@
 {%- comment -%}
-  Numbered reference list at the end of a post or talk page; item n gets the anchor #ref-n.
+  Numbered reference list at the end of posts and talks; item n gets the anchor #ref-n.
+  Every entry has the same form:  Authors (Year). Title. Venue. DOI: <link>   (or the URL when there is no DOI), (note)
   Front matter `references:` is a list; each entry is either
-    - a publication of this site, by its permalink name (the part after /publication/), e.g. epsteinlib
-    - an external source: url, optional citation (text before the link), optional note (shown in parentheses)
-  Publications cited here also count as the page's related papers (see _includes/related.html).
+    - a publication of this site, by its permalink name (the part after /publication/), e.g. epsteinlib;
+      authors, year, title, venue and DOI are taken from the publication's front matter
+    - an external source with the fields authors, year, title, venue, and doi or url; optional note
+  Internal links to own publications are in the Related section (_includes/related.html), not here.
 {%- endcomment -%}
 {%- if page.references -%}
 <h2 id="references">References</h2>
 <ol class="references">
-  {%- for ref in page.references %}
-  <li id="ref-{{ forloop.index }}">
-  {%- if ref.url -%}
-    {% if ref.citation %}{{ ref.citation }} {% endif %}<a href="{{ ref.url }}">{{ ref.url | remove: "https://" | remove: "http://" }}</a>{% if ref.note %} ({{ ref.note }}){% endif %}
+  {%- for ref in page.references -%}
+  {%- if ref.authors or ref.title or ref.url or ref.doi -%}
+    {%- assign r_authors = ref.authors -%}{%- assign r_year = ref.year -%}{%- assign r_title = ref.title -%}{%- assign r_venue = ref.venue -%}
+    {%- assign r_doi = ref.doi -%}{%- assign r_url = ref.url -%}{%- assign r_note = ref.note -%}{%- assign r_missing = nil -%}
   {%- else -%}
-    {%- assign ref_url = "/publication/" | append: ref -%}
-    {%- assign ref_pub = site.publications | where: "permalink", ref_url | first -%}
-    {%- if ref_pub -%}{% include pub-citation.html pub=ref_pub %}{%- else -%}Missing publication: {{ ref }}{%- endif -%}
+    {%- assign r_path = "/publication/" | append: ref -%}
+    {%- assign r_pub = site.publications | where: "permalink", r_path | first -%}
+    {%- if r_pub -%}
+      {%- assign r_authors = r_pub.citation | split: " (" | first | replace: "Busse, J. K.", "<strong>Busse, J. K.</strong>" | replace: "Hartlaub, J. K.", "<strong>Hartlaub, J. K.</strong>" -%}
+      {%- assign r_year = r_pub.date | date: "%Y" -%}{%- assign r_title = r_pub.title -%}{%- assign r_venue = r_pub.venue -%}{%- assign r_note = nil -%}{%- assign r_missing = nil -%}
+      {%- if r_pub.link contains "doi.org/" -%}{%- assign r_doi = r_pub.link | split: "doi.org/" | last -%}{%- assign r_url = nil -%}{%- else -%}{%- assign r_doi = nil -%}{%- assign r_url = r_pub.link -%}{%- endif -%}
+    {%- else -%}
+      {%- assign r_missing = ref -%}
+    {%- endif -%}
+  {%- endif %}
+  <li id="ref-{{ forloop.index }}">
+  {%- if r_missing -%}Missing publication: {{ r_missing }}{%- else -%}
+    {% if r_authors %}{{ r_authors }}{% if r_year %} ({{ r_year }}){% endif %}. {% endif %}{% if r_title %}{{ r_title }}. {% endif %}{% if r_venue %}<em>{{ r_venue }}</em>.{% endif %}
+    {%- if r_doi %} DOI: <a href="https://doi.org/{{ r_doi }}">{{ r_doi }}</a>{% elsif r_url %} <a href="{{ r_url }}">{{ r_url | remove: "https://" | remove: "http://" }}</a>{% endif %}{% if r_note %} ({{ r_note }}){% endif %}
   {%- endif -%}
   </li>
   {%- endfor %}

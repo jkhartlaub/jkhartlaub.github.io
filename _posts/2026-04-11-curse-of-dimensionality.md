@@ -12,8 +12,11 @@ references:
   - epstein-zeta-method-many-body
   - exact-lattice-summations-lennard-jones
   - zeta-expansion-long-range-micromagnetics
-  - url: https://www.kth.se/lediga-jobb/904789?l=en
-    note: "open PhD position at KTH Royal Institute of Technology"
+  - authors: "KTH Royal Institute of Technology"
+    year: 2026
+    title: "Open PhD position"
+    venue: "KTH Royal Institute of Technology"
+    url: "https://www.kth.se/lediga-jobb/904789?l=en"
 ---
 Do you know the incredibly frustrating feeling when you want to open a native note-taking app on Windows and immediately your machine slows down, you are asked to sign in to your Microsoft account, accept some cookies and update your machine to give you the pleasure of the latest AI features with questionable privacy practices 🙃
 
