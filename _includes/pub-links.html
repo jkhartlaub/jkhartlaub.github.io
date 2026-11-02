@@ -6,10 +6,11 @@
   Usage: {% include pub-links.html pub=post %}
 {%- endcomment -%}
 {%- assign pl = include.pub -%}
+{%- if pl.arxiv %}
+<p class="pub-links pub-links--secondary">View on <a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %} <span aria-hidden="true">·</span> v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}</p>
+{%- endif %}
 {%- if pl.link contains "doi.org/" -%}{%- assign pl_doi = pl.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pl_doi = nil -%}{%- endif -%}
 {%- if pl.link %}
 <p class="pub-links">{% if pl_doi %}DOI: <a href="{{ pl.link }}">{{ pl_doi }}</a> {% if pl.open_access == false %}<i class="ai ai-closed-access" aria-hidden="true" title="Closed access"></i><span class="sr-only">Closed access</span>{% else %}<i class="ai ai-open-access" aria-hidden="true" title="Open access"></i><span class="sr-only">Open access</span>{% endif %}{% else %}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{% endif %}</p>
 {%- endif %}
-{%- if pl.arxiv %}
-<p class="pub-links pub-links--secondary">View on <a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %} <span aria-hidden="true">·</span> v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}</p>
-{%- endif %}
+
