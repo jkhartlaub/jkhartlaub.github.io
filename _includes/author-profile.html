@@ -16,8 +16,7 @@
 
   <div class="author__content">
     <h3 class="author__name">{% if author.name_lines %}{{ author.name_lines | join: "<br>" }}{% else %}{{ author.name }}{% endif %}</h3>
-    {% if author.former_name %}<p class="author__former-name">formerly {{ author.former_name }}</p>{% endif %}
-    {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
+    {% if author.former_name or author.pronouns %}<p class="author__pronouns">{% if author.former_name %}<span class="author__former-name">formerly {{ author.former_name }}</span>{% if author.pronouns %} · {% endif %}{% endif %}{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
 
