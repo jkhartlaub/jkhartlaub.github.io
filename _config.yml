@@ -10,7 +10,6 @@
 locale                   : "en-US"
 site_theme               : "default"
 title                    : "Jonathan K. Hartlaub" # <title> of every page, search results, link previews
-masthead_title           : "Jonathan Kaspar Hartlaub" # name shown in the top bar
 title_separator          : "-"
 name                     : &name "Jonathan K. Hartlaub"
 description              : &description "PhD Candidate at the German Aerospace Center (DLR)"
@@ -25,7 +24,8 @@ repository               : "jkhartlaub/jkhartlaub.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Jonathan K. Hartlaub"
+  name             : "Jonathan Kaspar Hartlaub"
+  former_name      : "Busse" # shown in gray below the name in the sidebar
   pronouns         : "he / him"  
   bio              : "I am a PhD Candidate at the German Aerospace Center (DLR), specializing in long-range interacting classical and quantum systems"
   employer         : "German Aerospace Center (DLR)"
@@ -84,7 +84,7 @@ author:
   additional_name  : "Kaspar"
   family_name      : "Hartlaub"
   job_title        : "PhD Candidate"
-  alternateName    : # other names under which I am known or have published
+  alternateName    : "Jonathan K. Busse" # other names under which I am known or have published
     - "Jonathan Kaspar Hartlaub"
     - "Jonathan K. Busse"
     - "Jonathan Kaspar Busse"

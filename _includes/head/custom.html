@@ -32,7 +32,7 @@
       "@id": {{ site.url | append: "/#website" | jsonify }},
       "url": {{ site.url | append: "/" | jsonify }},
       "name": {{ site.title | jsonify }},
-      "alternateName": {{ site.masthead_title | jsonify }}
+      "alternateName": {{ a.name | jsonify }}
     },
     {
       "@type": "ProfilePage",
