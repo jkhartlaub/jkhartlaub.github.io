@@ -84,7 +84,7 @@ author:
   additional_name  : "Kaspar"
   family_name      : "Hartlaub"
   job_title        : "PhD Candidate"
-  alternateName    : "Jonathan K. Busse" # other names under which I am known or have published
+  alternateName    : # other names under which I am known or have published
     - "Jonathan Kaspar Hartlaub"
     - "Jonathan K. Busse"
     - "Jonathan Kaspar Busse"
