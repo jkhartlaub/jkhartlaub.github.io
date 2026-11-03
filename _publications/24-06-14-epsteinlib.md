@@ -10,7 +10,7 @@ excerpt: 'EpsteinLib is a high-performance C library for the computation of the 
 date: 2024-06-14
 venue: GitHub
 link: 'https://github.com/epsteinlib/epsteinlib'
-citation: 'Buchheit, A. A., Busse, J. K., Gutendorf, R., & Schmitz, J. (2024). EpsteinLib: Fast and Efficient Computation of the Epstein Zeta Function. GitHub. <a href=" https://github.com/epsteinlib/epsteinlib">github.com/epsteinlib</a>'
+citation: 'Buchheit, A. A., Busse, J. K., Gutendorf, R., & Schmitz, J. (2024). "EpsteinLib: Fast and Efficient Computation of the Epstein Zeta Function." <i>GitHub</i>. <a href="https://github.com/epsteinlib/epsteinlib">github.com/epsteinlib/epsteinlib</a>'
 ---
 
 <!--
