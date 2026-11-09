@@ -43,7 +43,7 @@
   align-content: flex-start;
   column-gap: 0.45em;
   padding-top: 0.2em;
-  font-family: $monospace;
+  font-family: $global-font-family;
   font-size: 0.8em;
   color: var(--global-text-color-light);
 
@@ -83,7 +83,7 @@
   display: none;
   margin-left: 0.5em;
   padding: 0.05em 0.45em;
-  font-family: $monospace;
+  font-family: $global-font-family;
   font-size: 0.7em;
   font-weight: normal;
   vertical-align: 0.15em;
