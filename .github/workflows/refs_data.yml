@@ -1,0 +1,40 @@
+name: Publication data from refs.bib
+
+# files/refs.bib is maintained by hand. On every push that changes it, this
+# regenerates _data/refs.json (abstracts and BibTeX for the publication pages)
+# with scripts/bib_to_data.py and commits the result to the same branch.
+
+on:
+  push:
+    paths:
+      - 'files/refs.bib'
+      - 'scripts/bib_to_data.py'
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert refs.bib
+        run: python3 scripts/bib_to_data.py
+      - name: Commit _data/refs.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/refs.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Content: regenerate _data/refs.json from refs.bib"
+          git push
+          # pushes made with GITHUB_TOKEN may not start a Pages build by themselves
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" || echo "Pages build request failed"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}

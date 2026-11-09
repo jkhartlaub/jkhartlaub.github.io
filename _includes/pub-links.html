@@ -4,15 +4,49 @@
   After the DOI: open-access icon, or closed-access icon when the front matter has open_access: false.
   Front matter: link (DOI or other URL), open_access (default true), arxiv (e.g. '2504.11989'), arxiv_version (e.g. 2), arxiv_date (date of that version).
   Usage: {% include pub-links.html pub=post %}
+  With oneline=true (publications list and publication pages), one line, read left to right:
+  where the publication is published (access icon and the DOI as link text, or for arXiv-only
+  preprints "arXiv:ID, vN, date", or the plain link), then in gray the toggles "Citation" (the citation
+  front matter) and "BibTeX", then "arXiv:ID, vN, date" when there is also a DOI; items separated by "·". Each toggle opens a box below the line that shows the text and a copy link
+  (assets/js/pub-boxes.js).
+  The BibTeX entry comes from _data/refs.json (files/refs.bib, see _includes/pub-ref.html);
+  no BibTeX toggle when refs.bib has no entry for the publication.
 {%- endcomment -%}
 {%- assign pl = include.pub -%}
-{%- if pl.arxiv %}
-<p class="pub-links pub-links--secondary">View on <a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %} <span aria-hidden="true">·</span> v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}</p>
-{%- endif %}
 {%- if pl.link contains "doi.org/" -%}{%- assign pl_doi = pl.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pl_doi = nil -%}{%- endif -%}
 {%- comment -%} arXiv-only preprints: the arXiv DOI adds nothing to the arXiv line, so it is left out {%- endcomment -%}
 {%- if pl_doi contains "10.48550/arXiv" and pl.arxiv -%}{%- assign pl_skip = true -%}{%- else -%}{%- assign pl_skip = false -%}{%- endif -%}
-{%- if pl.link and pl_skip == false %}
-<p class="pub-links">{% if pl_doi %}DOI: <a href="{{ pl.link }}">{{ pl_doi }}</a> {% if pl.open_access == false %}<i class="ai ai-closed-access" aria-hidden="true" title="Closed access"></i><span class="sr-only">Closed access</span>{% else %}<i class="ai ai-open-access" aria-hidden="true" title="Open access"></i><span class="sr-only">Open access</span>{% endif %}{% else %}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{% endif %}</p>
-{%- endif %}
+{%- capture pl_access -%}{% if pl.open_access == false %}<i class="ai ai-closed-access" aria-hidden="true" title="Closed access"></i><span class="sr-only">Closed access</span>{% else %}<i class="ai ai-open-access" aria-hidden="true" title="Open access"></i><span class="sr-only">Open access</span>{% endif %}{%- endcapture -%}
+{%- capture pl_arxiv -%}View on <a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %} <span aria-hidden="true">·</span> v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}{%- endcapture -%}
+{%- if include.oneline %}
+{%- capture pl_arxiv_short -%}<a href="https://arxiv.org/abs/{{ pl.arxiv }}">arXiv:{{ pl.arxiv }}</a>{% if pl.arxiv_version %}, v{{ pl.arxiv_version }}, <time datetime="{{ pl.arxiv_date | date_to_xmlschema }}">{{ pl.arxiv_date | date: "%b %-d, %Y" }}</time>{% endif %}{%- endcapture -%}
+{%- assign pl_sep = false -%}
 
+{%- assign pl_id = pl.url | slugify -%}
+{%- include pub-ref.html pub=pl -%}
+<p class="pub-links">
+  {%- if pl.link and pl_skip == false -%}
+    {%- if pl_doi -%}{{ pl_access }} <a href="{{ pl.link }}">{{ pl_doi }}</a>{%- else -%}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{%- endif -%}
+    {%- assign pl_sep = true -%}
+  {%- endif -%}
+  <span class="pub-links--secondary">
+  {%- if pl.arxiv and pl_sep == false -%}{{ pl_arxiv_short }}{%- assign pl_sep = true -%}{%- assign pl_arxiv_done = true -%}{%- else -%}{%- assign pl_arxiv_done = false -%}{%- endif -%}
+  {%- if pl.citation -%}<span class="pub-toggle-wrap" hidden>{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}<button type="button" class="pub-toggle" aria-controls="cite-{{ pl_id }}" aria-expanded="false">Citation</button></span>{%- assign pl_sep = true -%}{%- endif -%}
+  {%- if pub_ref.bibtex -%}<span class="pub-toggle-wrap" hidden>{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}<button type="button" class="pub-toggle" aria-controls="bib-{{ pl_id }}" aria-expanded="false">BibTeX</button></span>{%- assign pl_sep = true -%}{%- endif -%}
+  {%- if pl.arxiv and pl_arxiv_done == false %} <span aria-hidden="true">·</span> {{ pl_arxiv_short }}{%- endif -%}
+  </span>
+</p>
+{%- if pl.citation %}
+<div class="pub-box" id="cite-{{ pl_id }}" hidden><button type="button" class="pub-box__copy">copy</button><p class="pub-box__text">{{ pl.citation }}</p></div>
+{%- endif %}
+{%- if pub_ref.bibtex %}
+<div class="pub-box" id="bib-{{ pl_id }}" hidden><button type="button" class="pub-box__copy">copy</button><pre class="pub-box__text">{{ pub_ref.bibtex | escape }}</pre></div>
+{%- endif %}
+{%- else %}
+{%- if pl.arxiv %}
+<p class="pub-links pub-links--secondary">{{ pl_arxiv }}</p>
+{%- endif %}
+{%- if pl.link and pl_skip == false %}
+<p class="pub-links">{% if pl_doi %}DOI: <a href="{{ pl.link }}">{{ pl_doi }}</a> {{ pl_access }}{% else %}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{% endif %}</p>
+{%- endif %}
+{%- endif %}
