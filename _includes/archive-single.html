@@ -39,7 +39,7 @@
     <h2 class="archive__item-title post-item__title" itemprop="headline"><a href="{{ base_path }}{{ post.url }}">{{ title }}</a></h2>
     {% if post.citation %}<p class="post-item__authors">{{ pub_authors }}</p>{% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt post-item__excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | strip }}</p>{% endif %}
-    {% include pub-links.html pub=post %}
+    {% include pub-links.html pub=post oneline=true %}
   </article>
 </div>
 {% else %}

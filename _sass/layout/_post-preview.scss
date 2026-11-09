@@ -70,6 +70,48 @@
   color: var(--global-text-color-light);
 }
 
+/* BibTeX toggle in the one-line link row and the entry box below it (assets/js/bibtex.js) */
+.bibtex-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.bibtex {
+  position: relative;
+  margin-top: 0.5em;
+  border: 1px solid var(--global-border-color);
+
+  pre.bibtex__entry {
+    margin: 0;
+    padding: 0.75em 3.5em 0.75em 1em;
+    background: none;
+    font-size: 0.75em;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+.bibtex__copy {
+  position: absolute;
+  top: 0.35em;
+  right: 0.6em;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.85em;
+  color: var(--global-text-color-light);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* Closing note below a list (profile links on the publications page) */
 .pub-links--footer {
   margin-top: 2em !important;
