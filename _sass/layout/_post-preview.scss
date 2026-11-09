@@ -71,13 +71,22 @@
 }
 
 /* Citation and BibTeX toggles in the one-line link row and the boxes below it
-   (_includes/pub-links.html, assets/js/pub-boxes.js) */
-.pub-toggle {
+   (_includes/pub-links.html, assets/js/pub-boxes.js).
+   Buttons are reset completely (mobile browsers draw gray rounded buttons by default);
+   the box is a thin sharp outline in the light text gray, no fill, in light and dark theme. */
+.pub-toggle,
+.pub-box__copy {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
   padding: 0;
   border: 0;
-  background: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   font: inherit;
   color: inherit;
+  line-height: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
@@ -86,17 +95,24 @@
 .pub-box {
   position: relative;
   margin-top: 0.5em;
-  border: 1px solid var(--global-border-color);
+  border: 1px solid var(--global-text-color-light);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 
   .pub-box__text {
     margin: 0;
     padding: 0.75em 3.5em 0.75em 1em;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--global-text-color);
     font-size: 0.9em;
     line-height: 1.5;
   }
 
   pre.pub-box__text {
-    background: none;
     font-size: 0.75em;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
@@ -107,14 +123,8 @@
   position: absolute;
   top: 0.35em;
   right: 0.6em;
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
   font-size: 0.85em;
   color: var(--global-text-color-light);
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 /* Closing note below a list (profile links on the publications page) */
