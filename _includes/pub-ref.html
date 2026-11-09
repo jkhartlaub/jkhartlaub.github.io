@@ -1,0 +1,13 @@
+{%- comment -%}
+  Looks up a publication in _data/refs.json (generated from files/refs.bib by scripts/bib_to_data.py)
+  and sets pub_ref (with .bibtex and, if refs.bib has one, .abstract), or nil.
+  Key: the DOI from `link:` in lower case, otherwise `link:` in lower case without scheme, "www." and trailing slash.
+  Usage: {% include pub-ref.html pub=page %}
+{%- endcomment -%}
+{%- assign pr = include.pub -%}
+{%- if pr.link contains "doi.org/" -%}
+  {%- assign pub_ref_key = pr.link | split: "doi.org/" | last | downcase -%}
+{%- else -%}
+  {%- assign pub_ref_key = pr.link | downcase | remove_first: "https://" | remove_first: "http://" | remove_first: "www." | append: "#" | remove: "/#" | remove: "#" -%}
+{%- endif -%}
+{%- assign pub_ref = site.data.refs[pub_ref_key] -%}

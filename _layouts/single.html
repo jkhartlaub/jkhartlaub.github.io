@@ -50,6 +50,10 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+        {% if page.collection == 'publications' %}
+          {%- include pub-ref.html pub=page -%}
+          {% if pub_ref.abstract %}<p class="page__abstract">{{ pub_ref.abstract | escape }}</p>{% endif %}
+        {% endif %}
         {{ content }}
 
         {% if page.collection == 'posts' and page.link %}

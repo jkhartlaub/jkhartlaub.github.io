@@ -7,8 +7,8 @@
   With oneline=true (publications list and publication pages): DOI, then in gray the arXiv line and
   the toggles "Citation" (the citation front matter) and "BibTeX", all in one line; each toggle opens a box
   below the line that shows the text and a copy link (assets/js/pub-boxes.js).
-  The BibTeX entry comes from files/refs.bib, matched by DOI in the browser;
-  the BibTeX toggle stays hidden when refs.bib has no entry with that DOI.
+  The BibTeX entry comes from _data/refs.json (files/refs.bib, see _includes/pub-ref.html);
+  no BibTeX toggle when refs.bib has no entry for the publication.
 {%- endcomment -%}
 {%- assign pl = include.pub -%}
 {%- if pl.link contains "doi.org/" -%}{%- assign pl_doi = pl.link | split: "doi.org/" | last -%}{%- else -%}{%- assign pl_doi = nil -%}{%- endif -%}
@@ -19,6 +19,7 @@
 {%- if include.oneline %}
 {%- assign pl_sep = false -%}
 {%- assign pl_id = pl.url | slugify -%}
+{%- include pub-ref.html pub=pl -%}
 <p class="pub-links">
   {%- if pl.link and pl_skip == false -%}
     {%- if pl_doi -%}DOI: <a href="{{ pl.link }}">{{ pl_doi }}</a> {{ pl_access }}{%- else -%}<a href="{{ pl.link }}">{{ pl.link | remove: "https://" | remove: "http://" }}</a>{%- endif -%}
@@ -27,14 +28,14 @@
   <span class="pub-links--secondary">
   {%- if pl.arxiv -%}{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}{{ pl_arxiv }}{%- assign pl_sep = true -%}{%- endif -%}
   {%- if pl.citation -%}<span class="pub-toggle-wrap" hidden>{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}<button type="button" class="pub-toggle" aria-controls="cite-{{ pl_id }}" aria-expanded="false">Citation</button></span>{%- assign pl_sep = true -%}{%- endif -%}
-  {%- if pl_doi -%}<span class="pub-toggle-wrap pub-toggle-wrap--bibtex" hidden>{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}<button type="button" class="pub-toggle" aria-controls="bib-{{ pl_id }}" aria-expanded="false" data-doi="{{ pl_doi | downcase }}">BibTeX</button></span>{%- endif -%}
+  {%- if pub_ref.bibtex -%}<span class="pub-toggle-wrap" hidden>{% if pl_sep %} <span aria-hidden="true">·</span> {% endif %}<button type="button" class="pub-toggle" aria-controls="bib-{{ pl_id }}" aria-expanded="false">BibTeX</button></span>{%- endif -%}
   </span>
 </p>
 {%- if pl.citation %}
 <div class="pub-box" id="cite-{{ pl_id }}" hidden><button type="button" class="pub-box__copy">copy</button><p class="pub-box__text">{{ pl.citation }}</p></div>
 {%- endif %}
-{%- if pl_doi %}
-<div class="pub-box pub-box--bibtex" id="bib-{{ pl_id }}" hidden><button type="button" class="pub-box__copy">copy</button><pre class="pub-box__text"></pre></div>
+{%- if pub_ref.bibtex %}
+<div class="pub-box" id="bib-{{ pl_id }}" hidden><button type="button" class="pub-box__copy">copy</button><pre class="pub-box__text">{{ pub_ref.bibtex | escape }}</pre></div>
 {%- endif %}
 {%- else %}
 {%- if pl.arxiv %}
