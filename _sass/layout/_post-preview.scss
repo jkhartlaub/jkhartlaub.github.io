@@ -70,8 +70,9 @@
   color: var(--global-text-color-light);
 }
 
-/* BibTeX toggle in the one-line link row and the entry box below it (assets/js/bibtex.js) */
-.bibtex-toggle {
+/* Citation and BibTeX toggles in the one-line link row and the boxes below it
+   (_includes/pub-links.html, assets/js/pub-boxes.js) */
+.pub-toggle {
   padding: 0;
   border: 0;
   background: none;
@@ -82,23 +83,27 @@
   cursor: pointer;
 }
 
-.bibtex {
+.pub-box {
   position: relative;
   margin-top: 0.5em;
   border: 1px solid var(--global-border-color);
 
-  pre.bibtex__entry {
+  .pub-box__text {
     margin: 0;
     padding: 0.75em 3.5em 0.75em 1em;
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  pre.pub-box__text {
     background: none;
     font-size: 0.75em;
-    line-height: 1.5;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
 }
 
-.bibtex__copy {
+.pub-box__copy {
   position: absolute;
   top: 0.35em;
   right: 0.6em;
@@ -122,12 +127,12 @@
   margin-bottom: 0.25em;
 }
 
-/* Venue line and links block in the header of a publication page (_layouts/single.html):
-   links directly under the venue, space before the abstract */
-.page__venue {
-  margin-bottom: 0;
+/* Journal line above the title of a publication page */
+.page__inner-wrap > header > .post-meta {
+  margin: 0 0 0.4em;
 }
 
+/* Links block in the header of a publication page (_layouts/single.html): space before the abstract */
 .page__pub-links {
   margin-bottom: 1.5em;
 }
