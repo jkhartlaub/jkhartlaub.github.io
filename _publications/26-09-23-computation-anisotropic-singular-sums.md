@@ -3,7 +3,7 @@ title: "Computation of anisotropic singular sums from high-order derivatives of 
 collection: publications
 category: preprints
 permalink: /publication/computation-anisotropic-singular-sums
-excerpt: 'This paper addresses the efficient computation of large-scale singular sums with anisotropic interaction kernels, the anisotropic Epstein zeta functions, which correspond to high-order derivatives of Epstein zeta functions.'
+excerpt: 'This paper addresses the efficient computation of large-scale singular sums through anisotropic Epstein zeta functions, generalizations of Epstein zeta functions to anisotropic interaction kernels, which correspond to high-order vector derivatives of Epstein zeta functions.'
 date: 2026-09-23
 venue: 'arXiv'
 link: 'https://doi.org/10.48550/arXiv.2609.28282'

@@ -7,7 +7,7 @@ redirect_from:
   - /publication/2025-09-30-zeta-expansion-long-range
   - /publication/2026-03-24-zeta-expansion-long-range
   - /publication/26-08-15-zeta-expansion-long-range
-excerpt: 'This paper addresses the efficient computation of power-law-based interaction potentials of homogeneous n-dimensional bodies with an infinite d-dimensional array of copies, including their higher-order derivatives.'
+excerpt: 'This paper addresses the efficient computation of power-law-based interaction potentials of homogeneous d-dimensional bodies with an infinite n-dimensional array of copies, including their higher-order derivatives.'
 date: 2026-08-15
 venue: 'Journal of Computational Physics'
 link: 'https://doi.org/10.1016/j.jcp.2026.114885'

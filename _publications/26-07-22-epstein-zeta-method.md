@@ -7,7 +7,7 @@ redirect_from:
   - /publication/2025-04-16-epstein-zeta-method
   - /publication/25-04-16-epstein-zeta-method
   - /publication/26-06-22-epstein-zeta-method
-excerpt: 'This paper presents an efficiently computable representation of many-body lattice sums in terms of singular integrals over products of Epstein zeta functions.'
+excerpt: 'This paper presents an efficiently computable representation of iterated high-dimensional lattice sums arising from many-body interactions, casting them as singular integrals over products of Epstein zeta functions, with linear rather than exponential scaling in the number of bodies.'
 date: 2026-07-22
 venue: 'Numerische Mathematik'
 link: 'https://doi.org/10.1007/s00211-026-01558-y'

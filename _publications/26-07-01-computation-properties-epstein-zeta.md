@@ -6,7 +6,7 @@ permalink: /publication/computation-properties-epstein-zeta
 redirect_from:
   - /publication/2024-12-10-epstein-zeta-computation
   - /publication/26-07-01-computation-properties-epstein-zeta
-excerpt: 'This paper establishes the Epstein zeta function as a powerful tool in numerical analysis by rigorously investigating its analytical properties and enabling its efficient computation.'
+excerpt: 'With a complete discussion of its analytical properties and the efficient algorithm implemented in EpsteinLib, we establish the Epstein zeta function as a new standard function.'
 date: 2026-07-01
 venue: 'IMA Journal of Numerical Analysis'
 link: 'https://doi.org/10.1093/imanum/drag057'
